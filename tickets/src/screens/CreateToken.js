@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Form , Col , Row } from 'react-bootstrap'
 import { Button } from '@material-ui/core'
 import { Client , Hbar , TokenCreateTransaction } from '@hashgraph/sdk';
-
+import firebase from '../utils/firebase';
 
 
 import './CreateToken.css'
@@ -98,7 +98,17 @@ export default function CreateToken() {
         const tokenId = receipt.tokenId;
 
         console.log("The new token ID is " + tokenId);
+        const TicketsRef = firebase.database().ref("Tickets");
         
+        const Tickets = {
+                Name:Tkn.Name,
+                Symbol:Tkn.Sym,
+                Amount:Tkn.Amount,
+                Description:Tkn.Desc,
+                TokenId:tokenId,
+                Creator:PblKey,
+        }
+        TicketsRef.push(Tickets);
         
         SetTkn({
             Name:"",

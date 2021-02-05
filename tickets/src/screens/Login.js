@@ -10,9 +10,7 @@ import './Login.css'
 export default function Login() {
 
 
-    const myAccountId = '0.0.255748'
-    const myPrivateKey = '302e020100300506032b6570042204208abde9468b7b2956797e2cf62714a43630be78351989a6c6de2400003199f185'
-
+    
     const al = async () => {
 
         const client = Client.forTestnet();
