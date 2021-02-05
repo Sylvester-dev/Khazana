@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+}
+
+.header_logo {
+    width :40px;
+    height :40px;
+    margin: 10px;
+    object-fit: contain;
+}
+
+.header {
+    background-color:rgb(53, 64, 209);
+    display: flex;
+    align-items: center;
+}
+
+.header_searchbar {
+    display: flex;
+    flex:1;
+    margin:5px;
+}
+
+.header_search {
+    height: 25px;
+    width: 100%;
+    
+}
+
+.header_search_icon {
+    height:25px important;
+    padding: 5px;
+
+}
+
+.header_navigation {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+}
+
+.header_link {
+    text-decoration: none;
+    color: cornsilk;
+}
+
+.header_option {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.h {
+    margin:10px;
+    font-size: 20px;
+    
+}

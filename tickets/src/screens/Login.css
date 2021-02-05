@@ -1,0 +1,32 @@
+.f {
+    margin-top: 10px;
+    padding: 10px;
+    
+}
+
+.box {
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.screen {
+    /* background-color: grey;  */
+    margin-top: 200px;
+    
+}
+
+#jl {
+    margin:10px;
+    
+}
+
+#pl {
+    text-decoration: none;
+}
+
+.df {
+    margin-left: 300px;
+    margin-right: 300px;
+}

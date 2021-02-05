@@ -1,0 +1,52 @@
+* {
+    margin : 0;
+}
+
+.pic {
+    width: 288px;
+    height: 250px;
+}
+
+
+
+.hh{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#jj {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 70px;
+    height: 30px;
+    width: auto;
+    
+}
+
+.kl {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.gh {
+    background-color: bisque;
+    margin:20px;
+}
+
+.gg {
+    text-align: center;
+}
+
+#jkl{
+    margin-left: 75px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
