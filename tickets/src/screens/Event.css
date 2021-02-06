@@ -2,14 +2,14 @@
     margin : 0;
 }
 
-.pic {
+#pic {
     width: 288px;
     height: 250px;
 }
 
 
 
-.hh{
+#hh{
     margin: 20px;
     display: flex;
     flex-direction: row;
@@ -29,20 +29,33 @@
     
 }
 
-.kl {
+#kl {
     font-weight: bold;
     font-size: 20px;
     text-align: center;
     margin-top: 10px;
 }
 
-.gh {
+#gh {
     background-color: bisque;
     margin:20px;
 }
 
-.gg {
+#gg {
+    width: 200px;
     text-align: center;
+    margin:5px;
+    font-weight: 100;
+    justify-content: center;
+    font-size: small;
+    
+}
+
+#gl{
+    text-align: center;
+    margin:5px;
+    font-weight: 800;
+    font-size: 20px;
 }
 
 #jkl{
@@ -50,3 +63,4 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+

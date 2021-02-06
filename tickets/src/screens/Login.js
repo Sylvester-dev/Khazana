@@ -10,7 +10,9 @@ import './Login.css'
 export default function Login() {
 
 
-    
+    const myAccountId = ''
+    const myPrivateKey = ''
+
     const al = async () => {
 
         const client = Client.forTestnet();
@@ -41,6 +43,25 @@ export default function Login() {
 
         console.log("The new account ID is " +newAccountId);
 
+
+
+
+        /* const TicketsRef = firebase.firestore().collection('User');
+
+
+        
+        const Tick = {
+                Name:Tkn.Name,
+                Symbol:Tkn.Sym,
+                Amount:Tkn.Amt,
+                Description:Tkn.Desc,
+                TokenId:(tokenId.toString()),
+                Creator:PblKey,
+        }
+
+
+        TicketsRef.push(Tick); */
+
         const AccRef = firebase.database().ref("Acc");
         const PbKey = publicKey.toString();
         const Acc = {
@@ -50,7 +71,6 @@ export default function Login() {
                 AccTickets:[],
                 CreatedTickets:[],
             
-                
         }
         AccRef.push(Acc);
         alert("PrivateKey = 0x" + privateKey +'  '+ "PublicKey = 0x" + publicKey + '  ' + 'Account Id = ' + newAccountId)
