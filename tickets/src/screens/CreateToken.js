@@ -19,8 +19,7 @@ export default function CreateToken() {
     const privateKey = "302e020100300506032b6570042204201026b742d1ee8cb5a0141652191e0b63ec92719c53ab8ed59d98e6fc8f21ce45"
 
 
-    const [Tkn , SetTkn] = useState({
-        
+    const [Tkn , SetTkn] = useState({     
         Name:"",
         Sym:"",
         Desc:"",
@@ -28,14 +27,13 @@ export default function CreateToken() {
         Price:"",
         PbAdd:"",
         Skylink:"",
-        TknId:"",
-    
+        TknId:"",  
     });
 
 
     const inputEvent = (e) => {
-        /* console.log(e.target.value); */
-        /* SetTkn(e.target.value) */
+        //  console.log(e.target.value); 
+        //  SetTkn(e.target.value) 
 
         const value = e.target.value;
         const name = e.target.name;
@@ -47,7 +45,7 @@ export default function CreateToken() {
                     Name:value,
                     Sym:pv.Sym,
                     Desc:pv.Desc,
-                    Amt:pv.Amount,
+                    Amt:pv.Amt,
                     Price:pv.Price,
                 }
             }
@@ -56,7 +54,7 @@ export default function CreateToken() {
                     Name:pv.Name,
                     Sym:value,
                     Desc:pv.Desc,
-                    Amt:pv.Amount,
+                    Amt:pv.Amt,
                     Price:pv.Price,
                 }
             }
@@ -65,7 +63,7 @@ export default function CreateToken() {
                     Name:pv.Name,
                     Sym:pv.Sym,
                     Desc:value,
-                    Amt:pv.Amount,
+                    Amt:pv.Amt,
                     Price:pv.Price,
                 }
             }
@@ -83,7 +81,7 @@ export default function CreateToken() {
                     Name:pv.Name,
                     Sym:pv.Sym,
                     Desc:pv.Desc,
-                    Amt:pv.Amount,
+                    Amt:pv.Amt,
                     Price:value,
                 }
             }
@@ -224,7 +222,7 @@ export default function CreateToken() {
                     Amount
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Group name="Amt" onChange={inputEvent} type="text" value={Tkn.Amt} placeholder="Amount" />
+                    <Form.Control name="Amt" onChange={inputEvent} type="text" value={Tkn.Amt} placeholder="Amount" />
                     </Col>
                 </Form.Group>
 
@@ -233,7 +231,7 @@ export default function CreateToken() {
                     Price
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Group name="Price" onChange={inputEvent} type="text" value={Tkn.Price} placeholder="Price" />
+                    <Form.Control name="Price" onChange={inputEvent} type="text" value={Tkn.Price} placeholder="Price" />
                     </Col>
                 </Form.Group>
 
@@ -253,7 +251,7 @@ export default function CreateToken() {
                     <Form.File id="FormControlFile" label="Insert Image pls" />
                 </Form.Group>
                 <>
-                    <Form.Group as={Row}>
+                    {/* <Form.Group as={Row}>
                     <Form.Label className="gf" as="legend" column sm={2}>
                         Type of Token
                     </Form.Label>
@@ -271,7 +269,7 @@ export default function CreateToken() {
                         id="formHorizontalRadios2"
                         />
                     </Col>
-                    </Form.Group>
+                    </Form.Group> */}
                 </>
                 {/* <Form.Group as={Row} controlId="formHorizontalCheck">
                     <Col sm={{ span: 10, offset: 2 }}>

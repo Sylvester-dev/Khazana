@@ -3,11 +3,16 @@
 }
 
 #pic {
-    width: 288px;
-    height: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
-
+#in{
+ margin: 10px;
+ padding: 8px;
+}
 
 #hh{
     margin: 20px;
@@ -34,20 +39,47 @@
     font-size: 20px;
     text-align: center;
     margin-top: 10px;
+    color: white;
 }
 
 #gh {
-    background-color: bisque;
+    background-color: rgb(182, 156, 156);
     margin:20px;
+    
+}
+
+#ot{
+    display: flex;
+    justify-content: center;
+}
+
+#button-tooltip-2{
+    background-color: black;
+    color:blanchedalmond;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 5px;
+}
+
+#cim{
+    margin-right: 5px;
+}
+
+#bt1{
+    color: aquamarine;
+    background-color: darkcyan;
 }
 
 #gg {
-    width: 200px;
+    word-wrap: break-word;
     text-align: center;
     margin:5px;
+    padding: 10px;
     font-weight: 100;
     justify-content: center;
     font-size: small;
+    color: white;
+
     
 }
 
@@ -56,11 +88,21 @@
     margin:5px;
     font-weight: 800;
     font-size: 20px;
+    color: white;
 }
 
 #jkl{
-    margin-left: 115px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
+#cc{
+    width: 18rem;
+}
+
+#mcc{
+    background-color: rgb(77, 67, 67);
+    margin: 20px;
+}

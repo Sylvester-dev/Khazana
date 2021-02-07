@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react'
-import { Card } from 'react-bootstrap'
+import { Card,OverlayTrigger,Tooltip,Image} from 'react-bootstrap'
 import { Button } from '@material-ui/core';
 import { Client , TransferTransaction , TokenAssociateTransaction , PrivateKey} from '@hashgraph/sdk';
 import firebase from '../utils/firebase';
@@ -124,19 +124,46 @@ export default function Event() {
         <div id="hh">
             {K.map((K, index) => 
                     <>
-                      <div id="cardlist">    
-                      <Card id="gh" style={{ width: '18rem' }}>
-                        <Card.Img id ="pic" variant="top"  />
+                      <div id="mcc">    
+                      <Card id="cc">
+                        <Card.Img id ="pic" variant="top" src="https://www.svgrepo.com/show/9708/rocket-ship.svg"  />
                         <Card.Body>
                             <Card.Title id="kl">{K.Name}</Card.Title>
 
-                            <Card.Text id="gg"> {K.Desc} </Card.Text>
-                            
-                            <Card.Text id="gg">
+                            <Card.Text id="gg"> Description: {K.Desc}</Card.Text>
+                             <div id="ot">
+                             <OverlayTrigger
+                                  placement="bottom"
+                                  overlay={<Tooltip id="button-tooltip-2">{K.Creator}</Tooltip>}
+                                >
+                                  {({ ref, ...triggerHandler }) => (
+                                    <Button id="bt1"
+                                      variant="light"  
+                                      {...triggerHandler}
+                                      className="d-inline-flex align-items-center"
+                                    >
+                                      <Image
+                                        id="cim"
+                                        ref={ref}
+                                        roundedCircle
+                                        src="https://www.microsoft.com/en-us/research/wp-content/themes/microsoft-research-theme/assets/images/svg/icon-people-circle.svg" height="20px" width="20px"
+                                      />
+                                      <span className="ml-1">Hover to see Creator</span>
+                                    </Button>
+                                  )}
+                                </OverlayTrigger>, 
+                             </div>
+                      
+                            {/* <Card.Text id="gg">
                               {K.Creator}
-                            </Card.Text>
-                            <Card.Text id="gl">{K.Amount}</Card.Text>
-                            <Button onClick={buy} id="jkl" variant="contained" color="primary">Buy</Button>
+                            </Card.Text> */}
+                            <Card.Text id="gl">Amount: {K.Amount}</Card.Text>
+                            <Card.Text id="gl">Price: {K.Price}</Card.Text>
+                            <div  id="jkl">
+                             <input  id="in" type="number" placeholder="Number of Ticket"></input>
+                             <Button onClick={buy} variant="contained" color="primary">Buy</Button>
+                            </div>
+                            
                         </Card.Body>
                         </Card>
                       </div>  
