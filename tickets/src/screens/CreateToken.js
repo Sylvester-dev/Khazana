@@ -224,7 +224,7 @@ export default function CreateToken() {
                     Amount
                     </Form.Label>
                     <Col sm={10}>
-                    <input name="Amt" onChange={inputEvent} type="text" value={Tkn.Amt} placeholder="Amount" />
+                    <Form.Group name="Amt" onChange={inputEvent} type="text" value={Tkn.Amt} placeholder="Amount" />
                     </Col>
                 </Form.Group>
 
@@ -233,7 +233,7 @@ export default function CreateToken() {
                     Price
                     </Form.Label>
                     <Col sm={10}>
-                    <input name="Price" onChange={inputEvent} type="text" value={this.state.value} placeholder="Price" />
+                    <Form.Group name="Price" onChange={inputEvent} type="text" value={Tkn.Price} placeholder="Price" />
                     </Col>
                 </Form.Group>
 
