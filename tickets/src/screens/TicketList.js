@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Card,Form } from 'react-bootstrap'
 import { Button ,Input } from '@material-ui/core'
 
 import './TicketList.css'
@@ -95,13 +95,13 @@ export default function TicketList() {
                       <div className="cardlist">    
                       <Card className="gh" style={{ width: '18rem' }}>
                         <Card.Img className ="pic" variant="top" src={event.poster} />
-                        <Card.Body>
+                        <Card.Body id="cb">
                             <Card.Title className="kl">{event.title}</Card.Title>
                             <Card.Text className="gg">
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            <strong>Description: </strong> Stay on top of the changing U.S. and global markets with our market summary page. Dive deeper with our rich data, rate tables and tools.
                             </Card.Text>
-                            
+                            <Card.Text id="gl">Price : 1000</Card.Text>
+              
                             <Input className="op" placeholder = "Transfer To"></Input>
                             
                             <Button id="jj" variant="contained" color="primary">Transfer</Button>
