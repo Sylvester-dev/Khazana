@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Form , Col , Row } from 'react-bootstrap'
 import { Button } from '@material-ui/core'
-import { Client , Hbar , TokenCreateTransaction , PublicKey  } from '@hashgraph/sdk';
+import { Client  , TokenCreateTransaction , PublicKey  } from '@hashgraph/sdk';
 import firebase from '../utils/firebase';
+import { SkynetClient } from 'skynet-js'
+/* import IPFS from 'ipfs-core' */
 
 
 import './CreateToken.css'
@@ -19,24 +21,33 @@ export default function CreateToken() {
     const privateKey = "302e020100300506032b6570042204201026b742d1ee8cb5a0141652191e0b63ec92719c53ab8ed59d98e6fc8f21ce45"
 
 
-    const [Tkn , SetTkn] = useState({     
+    const [Tkn , SetTkn] = useState({   
+
         Name:"",
         Sym:"",
         Desc:"",
         Amt:"",
         Price:"",
         PbAdd:"",
-        Skylink:"",
-        TknId:"",  
+        TknId:"",
+        /* File:"", */ 
+
     });
+
+    const [File , SetFile] = useState('');
 
 
     const inputEvent = (e) => {
-        //  console.log(e.target.value); 
-        //  SetTkn(e.target.value) 
+        /* console.log(e.target.value); */
+        /* SetTkn(e.target.value) */
 
         const value = e.target.value;
         const name = e.target.name;
+        const files = e.target.files;
+        
+        
+        /* console.log(files[0]) */
+        
 
         /* console.log(name) */
         SetTkn((pv) => {
@@ -47,6 +58,7 @@ export default function CreateToken() {
                     Desc:pv.Desc,
                     Amt:pv.Amt,
                     Price:pv.Price,
+                    File:pv.File
                 }
             }
             else if( name === 'Sym'){
@@ -56,6 +68,7 @@ export default function CreateToken() {
                     Desc:pv.Desc,
                     Amt:pv.Amt,
                     Price:pv.Price,
+                    File:pv.File
                 }
             }
             else if( name === 'Desc'){
@@ -65,6 +78,7 @@ export default function CreateToken() {
                     Desc:value,
                     Amt:pv.Amt,
                     Price:pv.Price,
+                    File:pv.File
                 }
             }
             else if( name === 'Amt'){
@@ -74,6 +88,7 @@ export default function CreateToken() {
                     Desc:pv.Desc,
                     Amt:value,
                     Price:pv.Price,
+                    File:pv.File
                 }
             }
             else if( name === 'Price'){
@@ -83,13 +98,29 @@ export default function CreateToken() {
                     Desc:pv.Desc,
                     Amt:pv.Amt,
                     Price:value,
+                    File:pv.File
+                }
+            }
+            else if( name === 'File'){
+                return{
+                    Name:pv.Name,
+                    Sym:pv.Sym,
+                    Desc:pv.Desc,
+                    Amt:pv.Amt,
+                    Price:pv.Price,
+                    File:files[0],
                 }
             }
             
         })
 
-        console.log(Tkn.Price)
-        console.log(Tkn.Amt)
+
+        /* SetTkn({
+            File:(files)
+        }) */
+        /* console.log(e.target.files)
+        console.log(Tkn.File) */
+        console.log(Tkn)
     }
 
     const onSubmit = async (e) => {
@@ -97,8 +128,12 @@ export default function CreateToken() {
         
         console.log(Tkn)
 
+
+        
         const client = Client.forTestnet();
         client.setOperator(AccId, PrKey);
+
+
         const transaction = await new TokenCreateTransaction()
                         .setTokenName(Tkn.Name)
                         .setTokenSymbol(Tkn.Sym)
@@ -108,11 +143,6 @@ export default function CreateToken() {
        
         console.log(transaction)
 
-        //Sign the transaction with the token adminKey and the token treasury account private key
-        /* const signTx = await ( await transaction.sign(PblKey)).sign(PrKey);
-
-        //Sign the transaction with the client operator private key and submit to a Hedera network
-        const txResponse = await signTx.execute(client);  */
             
         //Get the receipt of the transaction
         const receipt = await transaction.getReceipt(client);
@@ -122,13 +152,31 @@ export default function CreateToken() {
 
 
 
-    
-
         console.log(tokenId)
+
+
         console.log("The new token ID is " + tokenId);
         SetTkn({
             TknId:(tokenId.toString())
         })
+       
+
+        
+        /* const ipfs = new IPFS({host: 'ipfs.infura.io', port: 5001, protocol: 'https'});
+        const data = "Writing a test message on the network";
+        ipfs.add(Tkn.File, (err, hash) => {
+            if(err){
+                return console.log(err);
+            }
+            console.log('https://ipfs.infura.io/ipfs/'+hash);
+        }) */
+
+        
+
+        /* const ipfs = await IPFS.create()
+        const { cid } = await ipfs.add(Tkn.File)
+        console.info(cid) */
+        
 
 
         firebase.firestore().collection('Tickets').doc().set({
@@ -140,6 +188,7 @@ export default function CreateToken() {
             Price:Tkn.Price,
             TokenId:(tokenId.toString()),
             Creator:PblKey,
+            Skylink:File
             
         
         })
@@ -165,15 +214,43 @@ export default function CreateToken() {
 
 
         TicketsRef.push(Tick); */
+
+        
         
         SetTkn({
             Name:"",
             Sym:"",
             Desc:"",
             Amt:"",
-            Price:""
+            Price:"",
+            File:""
         });
        
+    }
+
+
+    const file = async (e) => {
+
+
+        /* SetFile(e.target.files[0]); */
+        const cl = new SkynetClient("https://siasky.net/");
+        console.log(File)
+        console.log(cl)
+        
+        
+        const sl = await cl.uploadFile(e.target.files[0]);
+        console.log(sl)
+        console.log('https://siasky.net/' + sl.skylink.substring(4))
+        alert('File uploaded')
+        
+
+        SetFile(sl.skylink.substring(4))
+        console.log(File)
+        
+        
+
+
+        
     }
 
     return (
@@ -248,7 +325,7 @@ export default function CreateToken() {
 
 
                 <Form.Group>
-                    <Form.File id="FormControlFile" label="Insert Image pls" />
+                    <Form.File name="File" onChange={file} id="FormControlFile" label="Insert Image pls" />
                 </Form.Group>
                 <>
                     {/* <Form.Group as={Row}>
