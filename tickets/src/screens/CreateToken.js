@@ -199,6 +199,20 @@ export default function CreateToken() {
             console.error("Error writing document: ", error);
         });
 
+        /* firebase
+          .firestore()
+          .collection("User")
+          .doc()
+          .set({
+            
+          })
+          .then(() => {
+            console.log("Document successfully written!");
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
+          }); */
+
         /* const TicketsRef = firebase.database().ref("Tick");
 
 

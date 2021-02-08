@@ -10,8 +10,9 @@ import './Login.css'
 export default function Login() {
 
 
-    const myAccountId = ''
-    const myPrivateKey = ''
+    const myAccountId = "0.0.303460";
+    const myPrivateKey =
+      "302e020100300506032b6570042204201026b742d1ee8cb5a0141652191e0b63ec92719c53ab8ed59d98e6fc8f21ce45";
 
     const al = async () => {
 
@@ -27,7 +28,7 @@ export default function Login() {
 
         const transaction = new AccountCreateTransaction()
                             .setKey(privateKey.publicKey)
-                            .setInitialBalance(new Hbar(1000))
+                            .setInitialBalance(new Hbar(10))
                             
 
         //Sign the transaction with the client operator private key and submit to a Hedera network
@@ -62,17 +63,27 @@ export default function Login() {
 
         TicketsRef.push(Tick); */
 
-        const AccRef = firebase.database().ref("Acc");
-        const PbKey = publicKey.toString();
-        const Acc = {
+        
+
+
+        firebase.firestore().collection('User').doc((publicKey.toString())).set({
+            
                 PbKey:(publicKey.toString()),
                 PKey:(privateKey.toString()),
                 AccId:(newAccountId.toString()),
                 AccTickets:[],
                 CreatedTickets:[],
             
-        }
-        AccRef.push(Acc);
+        
+        })
+        .then(() => {
+            console.log("Document successfully written!");
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error);
+        });
+
+
         alert("PrivateKey = 0x" + privateKey +'  '+ "PublicKey = 0x" + publicKey + '  ' + 'Account Id = ' + newAccountId)
     }
     return (
