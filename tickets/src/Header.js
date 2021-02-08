@@ -44,20 +44,20 @@ export default function Header() {
                 </div>
                 
             </Link>
-            {/* <Link to='/login' className='header_link'>
+            <Link to='/login' className='header_link'>
                 <div className="header_options">
                     <span className="h">Login</span>
                     
                 </div>
                 
-            </Link> */}
-            {/* <Link to='/login' className='header_link'>
+            </Link>
+            <Link to='/profile' className='header_link'>
                 <div className="header_options">
-                    <span className="h">Sell</span>
+                    <span className="h">Profile</span>
                     
                 </div>
                 
-            </Link> */}
+            </Link>
 
 
         </div>
