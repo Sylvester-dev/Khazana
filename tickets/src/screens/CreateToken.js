@@ -275,10 +275,6 @@ export default function CreateToken() {
         SetFile(sl.skylink.substring(4))
         console.log(File)
         
-        
-
-
-        
     }
 
     return (
@@ -286,14 +282,14 @@ export default function CreateToken() {
             <div className="kl">
             <fieldset>
                 <Form>
-                <Form.Group as={Row} controlId="formHorizontalEmail">
+                 <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
                     <Form.Label id="lo" column sm={2}>
-                    Name of the Event
+                      Name of the Event
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control name="Name" onChange={inputEvent} type="text" value={Tkn.Name} placeholder="Name" />
+                    <Form.Control name="Name" id="fc" onChange={inputEvent} type="text" value={Tkn.Name} placeholder="Name" />
                     </Col>
-                </Form.Group>
+                 </Form.Group>
 
                 {/* <Form.Group as={Row} controlId="formHorizontalPassword">
                     <Form.Label column sm={2}>
@@ -304,39 +300,39 @@ export default function CreateToken() {
                     </Col>
                 </Form.Group> */}
 
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
+                <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
+                    <Form.Label id="lo" column sm={2}>
                     Symbol
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control name="Sym" onChange={inputEvent} type="text" value={Tkn.Sym} placeholder="Symbol" />
+                    <Form.Control name="Sym" id="fc" onChange={inputEvent} type="text" value={Tkn.Sym} placeholder="Symbol" />
                     </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
+                <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
+                    <Form.Label id="lo" column sm={2}>
                     Description
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control name="Desc" onChange={inputEvent} type="text" value={Tkn.Desc} placeholder="Description" />
+                    <Form.Control name="Desc" id="fc" onChange={inputEvent} type="text" value={Tkn.Desc} placeholder="Description" />
                     </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
+                <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
+                    <Form.Label id="lo" column sm={2}>
                     Amount
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control name="Amt" onChange={inputEvent} type="text" value={Tkn.Amt} placeholder="Amount" />
+                    <Form.Control name="Amt" id="fc" onChange={inputEvent} type="text" value={Tkn.Amt} placeholder="Amount" />
                     </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
+                <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
+                    <Form.Label id="lo" column sm={2}>
                     Price
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control name="Price" onChange={inputEvent} type="text" value={Tkn.Price} placeholder="Price" />
+                    <Form.Control name="Price" id="fc" onChange={inputEvent} type="text" value={Tkn.Price} placeholder="Price" />
                     </Col>
                 </Form.Group>
 
@@ -353,7 +349,10 @@ export default function CreateToken() {
 
 
                 <Form.Group>
-                    <Form.File name="File" onChange={file} id="FormControlFile" label="Insert Image pls" />
+                   <Form.Label id="lo" column sm={2}>
+                     Insert_Image
+                    </Form.Label>
+                    <Form.File name="File"  onChange={file} id="FormControlFile"/>
                 </Form.Group>
                 <>
                     {/* <Form.Group as={Row}>

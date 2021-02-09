@@ -54,9 +54,7 @@ export default function Header() {
             <Link to='/profile' className='header_link'>
                 <div className="header_options">
                     <span className="h">Profile</span>
-                    
-                </div>
-                
+                </div>            
             </Link>
 
 
