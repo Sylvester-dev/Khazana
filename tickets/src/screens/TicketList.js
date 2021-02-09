@@ -1,6 +1,7 @@
 import React , {useState , useEffect} from 'react'
 import TicketCard from '../component/TicketCard'
 import firebase from "../utils/firebase";
+import useKey from "../hooks/useKey"
 import {
   Client,
   AccountBalanceQuery,
@@ -23,7 +24,7 @@ export default function TicketList() {
   const [T, SetT] = useState("");
   const [V, SetV] = useState(''); 
 
-  /* const [Key, SetKey , AddKey , DelKey] = useKey(""); */
+  // const [Key, SetKey] = useKey("");
 
   
       useEffect( async() => {
@@ -40,9 +41,9 @@ export default function TicketList() {
           for (const [key, value] of a) {
 
 
-            console.log(key.toString(), value.toString());
-            SetT(key.toString())
-            SetV(value.toString())
+            console.log(JSON.stringify(key),JSON.stringify( value));
+            // SetT(key.toString())
+            // SetV(value.toString())
             t = key.toString();
             v = value.toString();
 

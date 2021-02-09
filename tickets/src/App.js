@@ -44,10 +44,7 @@ function App() {
           <Route path="/Mnemonic">
             <Mne />
           </Route>
-          {/* <Route path="/">
-            <Header />
-            <h1>home page</h1>
-          </Route> */}
+
           <Route path="/checkout">
             <Header />
             <h1>hhhhhhhhhhhhhhh</h1>
@@ -76,6 +73,11 @@ function App() {
           </Route>
           
           <Route path="/sell"></Route>
+
+          <Route path="/">
+            <Header />
+            <h1>home page</h1>
+          </Route>
           
         </Switch>
        </LoginContext.Provider>

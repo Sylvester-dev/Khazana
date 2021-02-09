@@ -1,5 +1,31 @@
-.bb {
-    margin:20px;
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+.kl {
+    color: #2c2828;
+    background-color: rgba(245, 245, 220, 0.856);
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.kl:hover {
+    -webkit-box-shadow: 0 13px 18px -8px rgba(0,0,0,.15),0 11px 55px 10px rgba(0,0,0,.07);
+    box-shadow: 0 13px 18px -8px rgba(0,0,0,.15),0 11px 55px 10px rgba(0,0,0,.07)
+  }
+
+.bb{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkgrey;
+    height: 95vh;
+}
+
+#fc{
+    padding: 10px;
+    width: 80%;
+    border: none;
+    border-radius: 20px;
+    outline-width: 0;
 }
 
 #jh {
@@ -27,11 +53,14 @@
     margin: 15px;
 }
 
-.kl {
-    margin-top: 110px;
+#fo{
+    margin: 15px;
 }
 
 #lo {
-    margin-top: 10px;
+    font-weight: 800;
+    font-family: 'Monoton', cursive;
+    font-size:large
+    
 }
 
