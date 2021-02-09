@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useContext} from 'react';
 import './App.css';
 import { BrowserRouter as  Router, Switch , Route } from 'react-router-dom';
 
@@ -11,16 +11,21 @@ import Mne from '../src/screens/Mnemonic'
 import Event from '../src/screens/Event'
 import TicketList from './screens/TicketList';
 import CreateToken from './screens/CreateToken';
-
+import Profile from './screens/Profile';
+import {LoginContext} from "./screens/LoginContext";
 
 function App() {
+  const [showProfile , setshowProfile ] = useState(false);
+  const [prKey , setPrKey ] = useState('');
   return (
 
     <Router>
       <div className="App">
-        <Switch>
+      <LoginContext.Provider value={{prKey,setPrKey,setshowProfile}}>
+      <Switch>
+        
         <Route path="/create">
-        <Header />
+          <Header />
           <CreateToken />
         </Route>
         <Route path="/market">
@@ -29,33 +34,51 @@ function App() {
             
           </Route>
           
-          <Route path="/ticket">
+        <Route path="/ticket">
           <Header />
           <TicketList />
             
-          </Route>
-          <Route path="/login">
-          <Login />
-            
-          </Route>
-          <Route path="/privatekey">
-            <PK />
-          </Route>
+        </Route>
+
+   
           <Route path="/Mnemonic">
             <Mne />
           </Route>
-          <Route path="/">
+          {/* <Route path="/">
             <Header />
             <h1>home page</h1>
-          </Route>
+          </Route> */}
           <Route path="/checkout">
             <Header />
             <h1>hhhhhhhhhhhhhhh</h1>
+          </Route>
+          <Route path="/profile">
+            
+             <Header/>
+             <Profile/>
+            
+            
+          </Route>
+          <Route path="/login">
+            
+            
+             <Login/>
+            
+            
+          </Route>
+          <Route path="/privateKey">
+            
+             <Header/>
+             
+             {showProfile ? <Profile />:<PK />}
+             
+            
           </Route>
           
           <Route path="/sell"></Route>
           
         </Switch>
+       </LoginContext.Provider>
       </div>
     </Router>
     
