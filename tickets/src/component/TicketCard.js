@@ -29,7 +29,7 @@ export default function TicketCard(props) {
               and global markets with our market summary page. Dive deeper with
               our rich data, rate tables and tools.
             </Card.Text>
-            <Card.Text id="gl">Price : 1000</Card.Text>
+            <Card.Text id="gl">Price : {props.T}</Card.Text>
 
             <Input className="op" placeholder="Transfer To"></Input>
 

@@ -21,8 +21,8 @@ let v;
 
 export default function TicketList() {
 
-  const [T, SetT] = useState("");
-  const [V, SetV] = useState(''); 
+  const [T, SetT] = useState([]);
+  // const [V, SetV] = useState(''); 
 
   // const [Key, SetKey] = useKey("");
 
@@ -60,8 +60,6 @@ export default function TicketList() {
               });
 
               
-
-              
             /* SetT(key.toString())
             SetV(value.toString()) */
             /* t = key.toString();
@@ -72,16 +70,16 @@ export default function TicketList() {
             
           }
 
-          firebase
-            .firestore()
-            .collection("User")
-            .doc(SellerPblKey)
-            .get().then((doc) => {
-              console.log(doc.data())
-            })
+          // firebase
+          //   .firestore()
+          //   .collection("User")
+          //   .doc(SellerPblKey)
+          //   .get().then((doc) => {
+          //     console.log(doc.data())
+          //   })
 
 
-            /* firebase.firestore().collection('User').doc(SellerPblKey)
+            firebase.firestore().collection('User').doc(SellerPblKey)
             .onSnapshot((doc) => {
 
               SetT(doc.data().AccTickets)
@@ -94,7 +92,7 @@ export default function TicketList() {
                   
               })
               
-            }) */
+            }) 
     
   }, [])
      
@@ -103,18 +101,18 @@ export default function TicketList() {
 
   
   return (
-           /* <div className="hh">
-            {t.map((t, index) => 
+           <div className="hh">
+            {T.map((T,index) => 
                     <>
                         <TicketCard T={T} />  
-                      <div>{t}</div>
+                        
                     </>
                 )}
-        </div> */
+        </div> 
 
-           <>
-            <div>{T}</div>
-          </> 
+          // <>
+          //   <div><TicketCard T={T} /></div>
+          // </> 
         );
   
     

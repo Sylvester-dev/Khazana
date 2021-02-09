@@ -212,7 +212,6 @@ export default function CreateToken() {
           .catch((error) => {
             console.error("Error writing document: ", error);
           });
-
         firebase
           .firestore()
           .collection("User")
@@ -228,8 +227,6 @@ export default function CreateToken() {
           });
  */
         /* const TicketsRef = firebase.database().ref("Tick");
-
-
         firebase.firestore.FieldValue.arrayUnion("greater_virginia")
         const Tick = {
                 Name:Tkn.Name,
@@ -239,8 +236,6 @@ export default function CreateToken() {
                 TokenId:(tokenId.toString()),
                 Creator:PblKey,
         }
-
-
         TicketsRef.push(Tick); */
 
         
@@ -384,7 +379,7 @@ export default function CreateToken() {
                 <Form.Group as={Row}>
                     <Col  sm={{ span: 10, offset: 2 }}>
                     <Button  id="bt" onClick={onSubmit} variant="contained" color="primary" type="submit">Create</Button>
-                    <Button  id="bt" onClick={onSubmit} variant="contained" color="primary" type="submit" style="padding-left: 14px; padding-right: 14px;">  NFT </Button>
+                    <Button  id="bt" className="bt1" onClick={onSubmit} variant="contained" color="primary" type="submit" >NFT</Button>
                     </Col>
          
                 </Form.Group>
