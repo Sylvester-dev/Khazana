@@ -7,7 +7,15 @@
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  border-radius: 50%;
+  margin-top: 20px;
   
+}
+
+#pic:hover{
+    transform: scale(1.1);
+    -webkit-box-shadow: 0 13px 18px 3px rgba(0,0,0,.15),0 11px 55px 10px rgba(0,0,0,.07);
+    box-shadow: 0 13px 18px -16px rgb(180, 168, 168),0 11px 55px 10px rgba(0,0,0,.07)
 }
 
 #in{
@@ -16,12 +24,13 @@
 }
 
 #hh{
-    margin: 20px;
+    /* margin: 20px; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    background-color: cornsilk;
 }
 
 #jj {
@@ -56,7 +65,7 @@
 
 #button-tooltip-2{
     background-color: black;
-    color:blanchedalmond;
+    color:whitesmoke;
     border-radius: 20px;
     margin: 5px;
     padding: 5px;
@@ -67,8 +76,8 @@
 }
 
 #bt1{
-    color: aquamarine;
-    background-color: darkcyan;
+    color: whitesmoke;
+    background-color: rgb(36, 95, 212);
 }
 
 #gg {
@@ -89,7 +98,7 @@
     margin:5px;
     font-weight: 800;
     font-size: 20px;
-    color: white;
+    color: white !important;
 }
 
 #jkl{
@@ -97,6 +106,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 5px;
 }
 
 #cc{
@@ -104,6 +114,13 @@
 }
 
 #mcc{
-    background-color: rgb(77, 67, 67);
+    /* background-color: rgb(77, 67, 67); */
+    background-color: #222222;
     margin: 20px;
+    border-radius: 10px;
 }
+
+#mcc:hover {
+    -webkit-box-shadow: 0 13px 18px 3px rgba(0,0,0,.15),0 11px 55px 10px rgba(0,0,0,.07);
+    box-shadow: 0 13px 18px 3px rgba(0,0,0,.15),0 11px 55px 10px rgba(0,0,0,.07)
+  }

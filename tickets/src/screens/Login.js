@@ -2,6 +2,7 @@ import React from 'react';
 import {Box ,Button} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { PrivateKey , Client , Hbar , AccountCreateTransaction, PublicKey } from '@hashgraph/sdk';
+import { Card,Image } from "react-bootstrap";
 import firebase from '../utils/firebase';
 
 import './Login.css'
@@ -87,14 +88,45 @@ export default function Login() {
         alert("PrivateKey = 0x" + privateKey +'  '+ "PublicKey = 0x" + publicKey + '  ' + 'Account Id = ' + newAccountId)
     }
     return (
+      
+      <div id="te"> <h1>LOGIN</h1> 
         <div className="screen">
-        <fieldset className="df">
-            <Box className ="box" component="div" m={1}>
+              
+            
 {/*         <Button className ="f" variant="info" >Login with Private Key</Button>{' '}
             <Button className ="f" variant="success"  >Login with Mnemonic</Button>{' '}
             <Button className ="f" variant="primary"  >Make an Account</Button>{' '}  */}  
 
-            <Link id="pl" to="/privatekey">
+            <Card id="ll">
+                <Card.Img variant="top" id="pi" src="https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" />
+                    <Card.Body>
+                    <Card.Title>Login With:</Card.Title>
+                    <Link id="pl" to="/privatekey">
+                     <Button id="jl" variant="contained" color="primary">Private Key</Button>
+                    </Link>
+                    </Card.Body>
+            </Card>
+            <Card  id="ll">
+                <Card.Img variant="top" id="pi" src="https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" />
+                    <Card.Body>
+                    <Card.Title style={{color:"white",fontSize:"small",fontFamily:"monospace"}}>Login With:</Card.Title>
+    
+                    <Link id="pl" to="/mnemonic">
+                      <Button id="jl" variant="contained" color="primary">Mnemonic</Button>
+                    </Link>
+                     
+                    </Card.Body>
+            </Card>
+            <Card  id="ll" >
+                <Card.Img variant="top" id="pi" src="https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" />
+                    <Card.Body>
+                    <Card.Title>Login With:</Card.Title>
+
+                     <Button onClick={al} id="jl" variant="contained"color="primary">Make an Account</Button>
+                    </Card.Body>
+            </Card>
+
+            {/* <Link id="pl" to="/privatekey">
                 <Button id="jl" variant="contained" color="secondary">Login with Private Key</Button>
             </Link>
 
@@ -103,12 +135,14 @@ export default function Login() {
             </Link>    
             
             
-            <Button onClick={al} id="jl" variant="contained" color="secondary">Make an Account</Button>
+            <Button onClick={al} id="jl" variant="contained" color="secondary">Make an Account</Button> */}
             
-            </Box>
+            
 
-        </fieldset>
+       
             
         </div>
+        </div>
+        
     )
 }

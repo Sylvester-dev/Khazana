@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
 .f {
     margin-top: 10px;
     padding: 10px;
@@ -5,20 +7,35 @@
 }
 
 .box {
-    align-items: center;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+   display: flex;
+   justify-content: center;
 }
 
 .screen {
-    /* background-color: grey;  */
-    margin-top: 200px;
+     /* background-color: grey;   */
+    margin-top: 30px;
+    display: flex;
+    justify-content:center;
+
     
 }
 
+#pi{
+    height: 200px;
+    width: 200px;
+}
+
+#te{
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 600;
+    font-family: 'Monoton', cursive;
+    font-size:larger
+
+}
+
 #jl {
-    margin:10px;
+    text-align: center;
     
 }
 
@@ -26,7 +43,10 @@
     text-decoration: none;
 }
 
-.df {
-    margin-left: 300px;
-    margin-right: 300px;
+#ll{
+    text-align: center;
+    margin: 30px;
+    background-color: #222222;
+    padding: 40px;
+    padding-bottom: 40px;
 }
