@@ -202,21 +202,35 @@ export default function CreateToken() {
         /* firebase
           .firestore()
           .collection("User")
-          .doc()
+          .doc(publicKey)
           .set({
-            
+            CreateTickets: tokenId.toString(),
           })
           .then(() => {
             console.log("Document successfully written!");
           })
           .catch((error) => {
             console.error("Error writing document: ", error);
-          }); */
+          });
 
+        firebase
+          .firestore()
+          .collection("User")
+          .doc(publicKey)
+          .update({
+            CreateTickets: firebase.firestore.FieldValue.arrayUnion(tokenId.toString()),
+          })
+          .then(() => {
+            console.log("Document successfully written!");
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
+          });
+ */
         /* const TicketsRef = firebase.database().ref("Tick");
 
 
-        
+        firebase.firestore.FieldValue.arrayUnion("greater_virginia")
         const Tick = {
                 Name:Tkn.Name,
                 Symbol:Tkn.Sym,

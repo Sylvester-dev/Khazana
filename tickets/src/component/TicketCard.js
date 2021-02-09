@@ -1,6 +1,20 @@
 import React from 'react'
 import { Card, Form } from "react-bootstrap";
 import { Button, Input } from "@material-ui/core";
+import {
+  Client,
+  TransferTransaction,
+  TokenAssociateTransaction,
+  PrivateKey,
+} from "@hashgraph/sdk";
+
+
+
+const SellerAccId = "0.0.301906";
+const SellerPblKey =
+  "0x302a300506032b657003210044c714812aec04be8c2c2704d4f0432f49b2f2b3350aa69fdc9b9715de9a8d9a";
+const SellerPrKey =
+  "0x302e020100300506032b65700422042092d0f20b0324b71b55bf397a85c214bbb66e98c8869911fb30dd7b6a0d60b7a4";
 
 
 export default function TicketCard(props) {
