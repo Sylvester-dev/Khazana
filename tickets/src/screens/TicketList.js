@@ -12,7 +12,7 @@ import './TicketList.css'
 
 const SellerAccId = "0.0.301906";
 const SellerPblKey =
-  "0x302a300506032b657003210044c714812aec04be8c2c2704d4f0432f49b2f2b3350aa69fdc9b9715de9a8d9a";
+  "302a300506032b657003210044c714812aec04be8c2c2704d4f0432f49b2f2b3350aa69fdc9b9715de9a8d9a";
 const SellerPrKey =
   "0x302e020100300506032b65700422042092d0f20b0324b71b55bf397a85c214bbb66e98c8869911fb30dd7b6a0d60b7a4";
 
@@ -27,7 +27,7 @@ export default function TicketList() {
   // const [Key, SetKey] = useKey("");
 
   
-      useEffect( async() => {
+      useEffect( async () => {
           const client = Client.forTestnet();
 
           client.setOperator(SellerAccId, SellerPrKey);
@@ -41,20 +41,60 @@ export default function TicketList() {
           for (const [key, value] of a) {
 
 
-            console.log(JSON.stringify(key),JSON.stringify( value));
-            // SetT(key.toString())
-            // SetV(value.toString())
-            t = key.toString();
+            /* console.log(key.toString(), value.toString()); */
+
+            firebase
+              .firestore()
+              .collection("User")
+              .doc(SellerPblKey)
+              .update({
+                AccTickets: firebase.firestore.FieldValue.arrayUnion(
+                  key.toString() + ":" + value.toString() + " "
+                ),
+              })
+              .then(() => {
+                console.log("Document successfully written!");
+              })
+              .catch((error) => {
+                console.error("Error writing document: ", error);
+              });
+
+              
+
+              
+            /* SetT(key.toString())
+            SetV(value.toString()) */
+            /* t = key.toString();
             v = value.toString();
 
             
-            console.log(t)
+            console.log(t) */
             
           }
 
-          
- 
-    
+          firebase
+            .firestore()
+            .collection("User")
+            .doc(SellerPblKey)
+            .get().then((doc) => {
+              console.log(doc.data())
+            })
+
+
+            /* firebase.firestore().collection('User').doc(SellerPblKey)
+            .onSnapshot((doc) => {
+
+              SetT(doc.data().AccTickets)
+              console.log(T)
+              console.log(doc.data())
+              
+              
+              doc.data().AccTickets.forEach(function (f) {
+                  console.log(f);
+                  
+              })
+              
+            }) */
     
   }, [])
      
@@ -63,18 +103,18 @@ export default function TicketList() {
 
   
   return (
-          /*  <div className="hh">
-            {T.map((T, index) => 
+           /* <div className="hh">
+            {t.map((t, index) => 
                     <>
-                      <TicketCard T={T} />
+                        <TicketCard T={T} />  
+                      <div>{t}</div>
                     </>
                 )}
         </div> */
 
-          <>
-            <div>{t}</div>
-            
-          </>
+           <>
+            <div>{T}</div>
+          </> 
         );
   
     

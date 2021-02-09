@@ -14,8 +14,12 @@ export default function Event() {
   useEffect(() => {
 
     firebase.firestore().collection('Tickets').onSnapshot(snapshot => {
-
-      SetK(snapshot.docs.map(doc => doc.data()));
+      
+      SetK(snapshot.docs.map(doc => doc.data()))
+      
+      
+      
+      
       console.log(K);
     
     })
