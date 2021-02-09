@@ -382,9 +382,11 @@ export default function CreateToken() {
                 </Form.Group> */}
 
                 <Form.Group as={Row}>
-                    <Col sm={{ span: 10, offset: 2 }}>
-                    <Button onClick={onSubmit} variant="contained" color="primary" type="submit">Create</Button>
+                    <Col  sm={{ span: 10, offset: 2 }}>
+                    <Button  id="bt" onClick={onSubmit} variant="contained" color="primary" type="submit">Create</Button>
+                    <Button  id="bt" onClick={onSubmit} variant="contained" color="primary" type="submit" style="padding-left: 14px; padding-right: 14px;">  NFT </Button>
                     </Col>
+         
                 </Form.Group>
                 </Form>
 
