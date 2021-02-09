@@ -179,7 +179,7 @@ export default function CreateToken() {
         
 
 
-        firebase.firestore().collection('Tickets').doc().set({
+        firebase.firestore().collection('Tickets').doc(tokenId.toString()).set({
             
             Name:Tkn.Name,
             Symbol:Tkn.Sym,
