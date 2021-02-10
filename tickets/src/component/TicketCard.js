@@ -18,6 +18,9 @@ const SellerPrKey =
 
 
 export default function TicketCard(props) {
+
+    var a = props.T.slice(0,10);
+    var b = props.T.slice(11);
     return (
       <div className="cardlist">
         <Card className="gh" style={{ width: "18rem" }}>
@@ -25,11 +28,9 @@ export default function TicketCard(props) {
           <Card.Body id="cb">
             <Card.Title className="kl">{props.T.title}</Card.Title>
             <Card.Text className="gg">
-              <strong>Description: </strong> Stay on top of the changing U.S.
-              and global markets with our market summary page. Dive deeper with
-              our rich data, rate tables and tools.
+              <strong>Description: </strong> {a}
             </Card.Text>
-            <Card.Text id="gl">Price : {props.T}</Card.Text>
+            <Card.Text id="gl">Price : {b}</Card.Text>
 
             <Input className="op" placeholder="Transfer To"></Input>
 
