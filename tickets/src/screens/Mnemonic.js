@@ -1,10 +1,7 @@
 import React , { useState } from 'react'
 import {Box , Button } from '@material-ui/core'
 import { Mnemonic, PrivateKey } from '@hashgraph/sdk'
-
-
 import './PrivateKey.css'
-
 
 
 export default function Mne() {
@@ -33,11 +30,11 @@ export default function Mne() {
 
 
     return (
-        <div className="screen">
+        <div className="screen1">
             <form >
                 <Box className ="box" component="div" m={1}>
-                <input onChange={inputEvent} type="text" className="pkinput" value={Mn}/>
-                <Button onClick={onSubmit} type="submit" className ="l" variant="contained" color="primary" title="hh">Login with Mnemonic Phrase</Button>
+                <input onChange={inputEvent} id="inn" type="text" placeholder="Enter Mnemonic Phrase" className="pkinput" value={Mn}/>
+                <Button onClick={onSubmit} type="submit" className ="l" variant="contained" color="primary" title="hh">Login</Button>
                 </Box>
             </form>
         </div>

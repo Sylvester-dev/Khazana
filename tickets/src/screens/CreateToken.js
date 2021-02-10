@@ -279,7 +279,7 @@ export default function CreateToken() {
                 <Form>
                  <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
                     <Form.Label id="lo" column sm={2}>
-                      Name of the Event
+                      Name of the Token
                     </Form.Label>
                     <Col sm={10}>
                     <Form.Control name="Name" id="fc" onChange={inputEvent} type="text" value={Tkn.Name} placeholder="Name" />
@@ -300,7 +300,7 @@ export default function CreateToken() {
                     Symbol
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control name="Sym" id="fc" onChange={inputEvent} type="text" value={Tkn.Sym} placeholder="Symbol" />
+                    <Form.Control name="Sym" id="fc" onChange={inputEvent} type="text" value={Tkn.Sym} placeholder="Symbol (Not for NFT)" />
                     </Col>
                 </Form.Group>
 
@@ -318,7 +318,7 @@ export default function CreateToken() {
                     Amount
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control name="Amt" id="fc" onChange={inputEvent} type="text" value={Tkn.Amt} placeholder="Amount" />
+                    <Form.Control name="Amt" id="fc" onChange={inputEvent} type="text" value={Tkn.Amt} placeholder="Amount (Not for NFT)" />
                     </Col>
                 </Form.Group>
 
@@ -345,7 +345,7 @@ export default function CreateToken() {
 
                 <Form.Group>
                    <Form.Label id="lo" column sm={2}>
-                     Insert_Image
+                     Insert_File
                     </Form.Label>
                     <Form.File name="File"  onChange={file} id="FormControlFile"/>
                 </Form.Group>

@@ -11,11 +11,22 @@
    justify-content: center;
 }
 
+#ti{
+    line-height: 10px;
+    color:white;
+    font-size: small;
+    font-family: monospace;
+    margin: 5px;
+    margin-top: 10px;
+}
+
 .screen {
      /* background-color: grey;   */
     margin-top: 30px;
     display: flex;
     justify-content:center;
+    flex-direction: row;
+    flex-wrap: wrap;
 
     
 }
@@ -49,4 +60,12 @@
     background-color: #222222;
     padding: 40px;
     padding-bottom: 40px;
+    border-radius: 10px;
+}
+
+ #ll:hover {
+        cursor: pointer;
+        transform: scale(1.10);
+        -webkit-box-shadow: 0 13px 18px 13px rgba(0,0,0,.15),0 11px 55px 10px rgba(0,0,0,.07);
+        box-shadow: 0 13px 18px 13px rgba(0,0,0,.15),0 11px 55px 10px rgba(0,0,0,.07)
 }

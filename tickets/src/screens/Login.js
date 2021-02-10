@@ -5,6 +5,7 @@ import { PrivateKey , Client , Hbar , AccountCreateTransaction, PublicKey } from
 import { Card,Image } from "react-bootstrap";
 import firebase from '../utils/firebase';
 
+
 import './Login.css'
 
 
@@ -98,9 +99,9 @@ export default function Login() {
             <Button className ="f" variant="primary"  >Make an Account</Button>{' '}  */}  
 
             <Card id="ll">
-                <Card.Img variant="top" id="pi" src="https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" />
+                <Card.Img variant="top" id="pi" src={"https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" }/>
                     <Card.Body>
-                    <Card.Title>Login With:</Card.Title>
+                    <Card.Title id="ti">Login With:</Card.Title>
                     <Link id="pl" to="/privatekey">
                      <Button id="jl" variant="contained" color="primary">Private Key</Button>
                     </Link>
@@ -109,7 +110,7 @@ export default function Login() {
             <Card  id="ll">
                 <Card.Img variant="top" id="pi" src="https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" />
                     <Card.Body>
-                    <Card.Title style={{color:"white",fontSize:"small",fontFamily:"monospace"}}>Login With:</Card.Title>
+                    <Card.Title id="ti">Login With:</Card.Title>
     
                     <Link id="pl" to="/mnemonic">
                       <Button id="jl" variant="contained" color="primary">Mnemonic</Button>
@@ -120,7 +121,7 @@ export default function Login() {
             <Card  id="ll" >
                 <Card.Img variant="top" id="pi" src="https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" />
                     <Card.Body>
-                    <Card.Title>Login With:</Card.Title>
+                    <Card.Title id="ti" >Login With:</Card.Title>
 
                      <Button onClick={al} id="jl" variant="contained"color="primary">Make an Account</Button>
                     </Card.Body>
