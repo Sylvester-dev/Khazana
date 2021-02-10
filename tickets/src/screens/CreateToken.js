@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { Form , Col , Row } from 'react-bootstrap'
 import { Button } from '@material-ui/core'
-import { Client  , TokenCreateTransaction , PublicKey  } from '@hashgraph/sdk';
+import {
+  Client,
+  TokenCreateTransaction,
+  PublicKey,
+  PrivateKey,
+} from "@hashgraph/sdk";
 import firebase from '../utils/firebase';
 import { SkynetClient } from 'skynet-js'
 /* import IPFS from 'ipfs-core' */
@@ -161,24 +166,6 @@ export default function CreateToken() {
         })
        
 
-        
-        /* const ipfs = new IPFS({host: 'ipfs.infura.io', port: 5001, protocol: 'https'});
-        const data = "Writing a test message on the network";
-        ipfs.add(Tkn.File, (err, hash) => {
-            if(err){
-                return console.log(err);
-            }
-            console.log('https://ipfs.infura.io/ipfs/'+hash);
-        }) */
-
-        
-
-        /* const ipfs = await IPFS.create()
-        const { cid } = await ipfs.add(Tkn.File)
-        console.info(cid) */
-        
-
-
         firebase.firestore().collection('Tickets').doc(tokenId.toString()).set({
             
             Name:Tkn.Name,
@@ -246,9 +233,85 @@ export default function CreateToken() {
             Desc:"",
             Amt:"",
             Price:"",
-            File:""
+            
         });
+
+        SetFile("");
        
+    }
+
+    const Nft = async (e) => {
+        e.preventDefault();
+
+        console.log(Tkn)
+
+        const client = Client.forTestnet();
+        client.setOperator(AccId, PrKey);
+        
+
+        const transaction = await new TokenCreateTransaction()
+              .setTokenName(Tkn.Name)
+              .setTokenSymbol(File)
+              .setTreasuryAccountId(AccId)
+              .setInitialSupply(1)
+              .freezeWith(client);
+
+            console.log(
+              transaction.transactionId.validStart.seconds.toString()
+            );
+            
+            //Get the receipt of the transaction
+
+            const txn = await transaction.sign(PrivateKey.fromString(PrKey));
+            
+
+            const signtxn = await txn.execute(client);
+            console.log(txn)
+
+            const receipt = await signtxn.getReceipt(client);
+            
+            //Get the token ID from the receipt
+            const tokenId = receipt.tokenId;
+
+            console.log(tokenId.toString()); 
+
+
+
+            firebase
+            .firestore()
+            .collection("NFT")
+            .doc(tokenId.toString())
+            .set({
+                Name: Tkn.Name,
+                Symbol: File,
+                Amount: 1,
+                Description: Tkn.Desc + ' link to doc is as follows - ' + `https://siasky.net/${File}`,
+                Price: Tkn.Price,
+                TokenId: tokenId.toString(),
+                Creator: PblKey,
+                Skylink: File,
+            })
+            .then(() => {
+            console.log("Document successfully written!");
+            })
+            .catch((error) => {
+            console.error("Error writing document: ", error);
+            });
+
+
+
+
+
+            SetTkn({
+              Name: "",
+              Sym: "",
+              Desc: "",
+              Amt: "",
+              Price: "",
+            });
+
+            SetFile('');
+
     }
 
 
@@ -379,7 +442,7 @@ export default function CreateToken() {
                 <Form.Group as={Row}>
                     <Col  sm={{ span: 10, offset: 2 }}>
                     <Button  id="bt" onClick={onSubmit} variant="contained" color="primary" type="submit">Create</Button>
-                    <Button  id="bt" className="bt1" onClick={onSubmit} variant="contained" color="primary" type="submit" >NFT</Button>
+                    <Button  id="bt" className="bt1" onClick={Nft} variant="contained" color="primary" type="submit" >NFT</Button>
                     </Col>
          
                 </Form.Group>
