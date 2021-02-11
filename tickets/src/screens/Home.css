@@ -45,13 +45,11 @@
 
 #pich{
   height: 200px;
-  width: 200px;
+  width: 220px;
 }
 
 @media only screen and (max-width: 600px) {
-  #pich {
-   display: none;
-  }
+
   #dout{
     display: flex;
     align-items: center;
