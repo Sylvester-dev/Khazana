@@ -15,6 +15,7 @@ export default function PK() {
     const inputEvent = (e) => {
         /* console.log(e.target.value); */
         setPrKey(e.target.value)
+    
     }
 
     /* media milk rally thought afford gas monitor close box slow employ marine quality jacket orbit trigger cancel try above weird save prepare snow slim */
@@ -38,13 +39,18 @@ export default function PK() {
     }
 
     return (
-        <div className="screen">
-            
+        
+     
+        <div className="screen1">
+          
+             <form>
                 <Box className ="box" component="div" m={1}>
-                <input type="text" className="pkinput" onChange={inputEvent} value={prKey}/>
-                <Button onClick={onSubmit} type="submit" id ="l" variant="contained" color="primary" title="hh">Login with Private Key</Button>
+               
+                <input type="text" id="inn" onChange={inputEvent} value={prKey} placeholder="Enter Your PivateKey"/>
+                <Button onClick={onSubmit} type="submit" id ="l" variant="contained" color="primary" title="hh">Login</Button>
                 </Box>
-            
+            </form>
         </div>
+       
     )
 }

@@ -1,11 +1,9 @@
 import React,{useState,useContext} from 'react';
 import './App.css';
 import { BrowserRouter as  Router, Switch , Route } from 'react-router-dom';
-
-
-
 import Header from './Header'
 import Login from '../src/screens/Login'
+import Home from '../src/screens/Home'
 import PK from '../src/screens/PrivateKey'
 import Mne from '../src/screens/Mnemonic'
 import Event from '../src/screens/Event'
@@ -18,7 +16,49 @@ import NFT from './screens/NFT';
 function App() {
   const [showProfile , setshowProfile ] = useState(false);
   const [prKey , setPrKey ] = useState('');
+  
   return (
+<<<<<<< HEAD
+
+<Router>
+  <div className="App">
+    <LoginContext.Provider value={{prKey,setPrKey,setshowProfile}}>
+      <Switch>       
+        <Route path="/create">
+          <Header />
+          <CreateToken />
+        </Route>
+        <Route path="/market">
+            <Header />
+            <Event />
+        </Route>
+        <Route path="/ticket">
+          <Header />
+          <TicketList />
+        </Route>
+        <Route path="/Mnemonic">
+            <Mne />
+        </Route>
+        <Route path="/profile">           
+             <Header/>
+             <Profile/>         
+        </Route>
+        <Route path="/login">
+             <Login/> 
+        </Route>
+        <Route path="/privateKey">  
+             <PK />
+        </Route>
+        <Route path="/">
+            <Header />
+            <Home />
+        </Route>   
+      </Switch>
+    </LoginContext.Provider>
+  </div>
+</Router>
+    
+=======
     <Router>
       <div className="App">
         <LoginContext.Provider value={{ prKey, setPrKey, setshowProfile }}>
@@ -73,6 +113,7 @@ function App() {
         </LoginContext.Provider>
       </div>
     </Router>
+>>>>>>> b0354a100316c7ada1dc3c2d1b50f5cced2e65cb
   );
 }
 
