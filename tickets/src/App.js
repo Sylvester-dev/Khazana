@@ -11,18 +11,18 @@ import Event from '../src/screens/Event'
 import TicketList from './screens/TicketList';
 import CreateToken from './screens/CreateToken';
 import Profile from './screens/Profile';
+import ColorMarket from './screens/ColorMarket';
 import {LoginContext} from "./screens/LoginContext";
 import NFT from './screens/NFT';
 import DNFT from "./screens/DNFT";
 
 function App() {
-  const [showProfile , setshowProfile ] = useState(false);
   const [prKey , setPrKey ] = useState('');
   
   return (
     <Router>
       <div className="App">
-        <LoginContext.Provider value={{ prKey, setPrKey, setshowProfile }}>
+        <LoginContext.Provider value={{ prKey, setPrKey}}>
           <Switch>
             <Route path="/create">
               <Header />
@@ -56,6 +56,10 @@ function App() {
         <Route path="/color">  
              <Header/>
              <Color />
+        </Route>
+        <Route path="/colorMarket">  
+             <Header/>
+             <ColorMarket />
         </Route>
         <Route path="/">
             <Header />

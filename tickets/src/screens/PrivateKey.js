@@ -9,7 +9,7 @@ import './PrivateKey.css'
 
 export default function PK() {
     
-    const {setPrKey,prKey,setshowProfile} = useContext(LoginContext);
+    const {setPrKey,prKey} = useContext(LoginContext);
     // const [PrKey , SetPrKey ] = useState('');
     const history = useHistory();
     
@@ -23,7 +23,7 @@ export default function PK() {
     
     
     const onSubmit = async (e) => {
-        setshowProfile(false);
+        
         history.push("/profile")
         // e.preventDefault();
         // const privateKey = PrivateKey.fromString(PrKey); 
