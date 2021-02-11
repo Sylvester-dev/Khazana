@@ -50,7 +50,7 @@ export default function Header() {
           </Link>
           <Link to="/login" className="header_link">
             <div className="header_options">
-              <span className="h">Login</span>
+              <span className="h">LogOut</span>
             </div>
           </Link>
           <Link to="/profile" className="header_link">

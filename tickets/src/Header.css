@@ -29,7 +29,7 @@
 }
 
 .header_search_icon {
-    height:25px important;
+    height:25px !important;
     padding: 5px;
     color: white;
     cursor: pointer;
@@ -45,7 +45,16 @@
     text-decoration: none;
     color: white;
 }
-
+@media only screen and (max-width: 600px) {
+    .header_searchbar {
+        display: none;
+    }
+    
+    
+    .header_search_icon {
+       display: none;
+    }
+}
 .header_link:hover {
     text-decoration: none;
     color: rgb(206, 166, 166);

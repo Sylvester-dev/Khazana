@@ -1,0 +1,62 @@
+.banner{
+  color: white;
+  
+  height: 80vh;
+}
+
+.banner__contents{
+  margin-left: 30px;
+  padding-top: 140px;
+  height: 48vh;
+}
+
+.banner--fadeBottom{
+  height: 7.4rem;
+  background-image: linear-gradient(180deg,transparent,rgba(37,37,37,0.61),#111);
+}
+
+#sec{
+  height: 400px;
+  background-color: black;
+  margin-top: 2px;
+}
+
+#dout{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  object-fit: contain;
+}
+
+#d1{
+  max-width: 450px;
+  float: left;
+  margin-top: 100px;
+  color: #fff;
+}
+
+#d2{
+  max-width: 450px;
+  float: right;
+  margin-top: 100px;
+  color: #fff;
+
+}
+
+#pich{
+  height: 200px;
+  width: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+  #pich {
+   display: none;
+  }
+  #dout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    object-fit: contain;
+  }
+}

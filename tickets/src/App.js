@@ -18,7 +18,6 @@ function App() {
   const [prKey , setPrKey ] = useState('');
   
   return (
-<<<<<<< HEAD
 
 <Router>
   <div className="App">
@@ -31,6 +30,10 @@ function App() {
         <Route path="/market">
             <Header />
             <Event />
+        </Route>
+        <Route path="/nft">
+              <Header />
+              <NFT />
         </Route>
         <Route path="/ticket">
           <Header />
@@ -58,62 +61,6 @@ function App() {
   </div>
 </Router>
     
-=======
-    <Router>
-      <div className="App">
-        <LoginContext.Provider value={{ prKey, setPrKey, setshowProfile }}>
-          <Switch>
-            <Route path="/create">
-              <Header />
-              <CreateToken />
-            </Route>
-            <Route path="/market">
-              <Header />
-              <Event />
-            </Route>
-
-            <Route path="/nft">
-              <Header />
-              <NFT />
-            </Route>
-
-            <Route path="/ticket">
-              <Header />
-              
-            </Route>
-
-            <Route path="/Mnemonic">
-              <Mne />
-            </Route>
-
-            <Route path="/checkout">
-              <Header />
-              <h1>hhhhhhhhhhhhhhh</h1>
-            </Route>
-            <Route path="/profile">
-              <Header />
-              <Profile />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/privateKey">
-              <Header />
-
-              {showProfile ? <Profile /> : <PK />}
-            </Route>
-
-            <Route path="/sell"></Route>
-
-            <Route path="/">
-              <Header />
-              <h1>home page</h1>
-            </Route>
-          </Switch>
-        </LoginContext.Provider>
-      </div>
-    </Router>
->>>>>>> b0354a100316c7ada1dc3c2d1b50f5cced2e65cb
   );
 }
 

@@ -11,13 +11,13 @@ export default function PK() {
     const {setPrKey,prKey,setshowProfile} = useContext(LoginContext);
     // const [PrKey , SetPrKey ] = useState('');
     
-
+    
     const inputEvent = (e) => {
         /* console.log(e.target.value); */
         setPrKey(e.target.value)
     
     }
-
+    
     /* media milk rally thought afford gas monitor close box slow employ marine quality jacket orbit trigger cancel try above weird save prepare snow slim */
     
     

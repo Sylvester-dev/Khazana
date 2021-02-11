@@ -151,7 +151,35 @@ export default function NFTCard(props) {
                               {props.K.Creator}
                             </Card.Text> */}
           <Card.Text id="gl">Amount: {props.K.Amount}</Card.Text>
-          <Card.Text id="gl">Symbol: {props.K.Symbol }</Card.Text>
+          <div id="ot">
+            <OverlayTrigger
+              placement="bottom"
+              overlay={
+                <Tooltip id="button-tooltip-2">{props.K.Symbol}</Tooltip>
+              }
+            >
+              {({ ref, ...triggerHandler }) => (
+                <Button
+                  id="bt1"
+                  variant="light"
+                  {...triggerHandler}
+                  className="d-inline-flex align-items-center"
+                >
+                  <Image
+                    id="cim"
+                    ref={ref}
+                    roundedCircle
+                    src="https://www.microsoft.com/en-us/research/wp-content/themes/microsoft-research-theme/assets/images/svg/icon-people-circle.svg"
+                    height="20px"
+                    width="20px"
+                  />
+                  <span className="ml-1">Hover to see Symbol</span>
+                </Button>
+              )}
+            </OverlayTrigger>
+            ,
+          </div>
+          {/* <Card.Text id="gl">Symbol: {props.K.Symbol }</Card.Text> */}
           <Card.Text id="gl">Price: {props.K.Price}</Card.Text>
 
           <div id="jkl">
