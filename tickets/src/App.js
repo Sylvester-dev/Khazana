@@ -12,55 +12,59 @@ import CreateToken from './screens/CreateToken';
 import Profile from './screens/Profile';
 import {LoginContext} from "./screens/LoginContext";
 import NFT from './screens/NFT';
+import DNFT from "./screens/DNFT";
 
 function App() {
   const [showProfile , setshowProfile ] = useState(false);
   const [prKey , setPrKey ] = useState('');
   
   return (
-
-<Router>
-  <div className="App">
-    <LoginContext.Provider value={{prKey,setPrKey,setshowProfile}}>
-      <Switch>       
-        <Route path="/create">
-          <Header />
-          <CreateToken />
-        </Route>
-        <Route path="/market">
-            <Header />
-            <Event />
-        </Route>
-        <Route path="/nft">
+    <Router>
+      <div className="App">
+        <LoginContext.Provider value={{ prKey, setPrKey, setshowProfile }}>
+          <Switch>
+            <Route path="/create">
+              <Header />
+              <CreateToken />
+            </Route>
+            <Route path="/market">
+              <Header />
+              <Event />
+            </Route>
+            <Route path="/nft">
               <Header />
               <NFT />
-        </Route>
-        <Route path="/ticket">
-          <Header />
-          <TicketList />
-        </Route>
-        <Route path="/Mnemonic">
-            <Mne />
-        </Route>
-        <Route path="/profile">           
-             <Header/>
-             <Profile/>         
-        </Route>
-        <Route path="/login">
-             <Login/> 
-        </Route>
-        <Route path="/privateKey">  
-             <PK />
-        </Route>
-        <Route path="/">
-            <Header />
-            <Home />
-        </Route>   
-      </Switch>
-    </LoginContext.Provider>
-  </div>
-</Router>
-    
+            </Route>
+            <Route path="/dnft">
+              <Header />
+              <DNFT />
+            </Route>
+            <Route path="/ticket">
+              <Header />
+              <TicketList />
+            </Route>
+            <Route path="/Mnemonic">
+              <Mne />
+            </Route>
+            <Route path="/profile">
+              <Header />
+              <Profile />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/privateKey">
+              
+              <PK />
+            </Route>
+            <Route path="/">
+              <Header />
+              <Home />
+            </Route>
+          </Switch>
+        </LoginContext.Provider>
+      </div>
+    </Router>
   );
 }
 

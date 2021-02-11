@@ -6,6 +6,8 @@ import {
   TokenCreateTransaction,
   PublicKey,
   PrivateKey,
+  TopicCreateTransaction,
+  TopicMessageSubmitTransaction,
 } from "@hashgraph/sdk";
 import firebase from '../utils/firebase';
 import { SkynetClient } from 'skynet-js'
@@ -314,6 +316,98 @@ export default function CreateToken() {
 
     }
 
+    const Dnft = async (e) => {
+        e.preventDefault();
+
+        console.log(Tkn)
+
+
+        const client = Client.forTestnet();
+        client.setOperator(AccId, PrKey);
+
+        const transaction = new TopicCreateTransaction().setSubmitKey(
+          PrivateKey.fromString(PrKey)
+        );
+
+        //Sign with the client operator private key and submit the transaction to a Hedera network
+        const txResponse = await transaction.execute(client);
+
+        //Request the receipt of the transaction
+        const receipt = await txResponse.getReceipt(client);
+
+        //Get the topic ID
+        const newTopicId = receipt.topicId;
+
+        console.log(newTopicId.toString())
+
+        const l = await new TopicMessageSubmitTransaction({
+          topicId: newTopicId,
+          message: `https://siasky.net/${File}`,
+        }).execute(client);
+
+
+
+
+        const loltxn = await new TokenCreateTransaction()
+          .setTokenName(Tkn.Name)
+          .setTokenSymbol(newTopicId.toString())
+          .setTreasuryAccountId(AccId)
+          .setInitialSupply(Tkn.Amt)
+          .freezeWith(client);
+
+        
+
+        //Get the receipt of the transaction
+
+        const txn = await loltxn.sign(PrivateKey.fromString(PrKey));
+
+        const signtxn = await txn.execute(client);
+        console.log(txn);
+
+        const lolreceipt = await signtxn.getReceipt(client);
+
+        //Get the token ID from the receipt
+        const tokenId = lolreceipt.tokenId;
+
+        console.log(tokenId.toString());
+
+        firebase
+          .firestore()
+          .collection("DNFT")
+          .doc(tokenId.toString())
+          .set({
+            Name: Tkn.Name,
+            Symbol: newTopicId.toString(),
+            Amount: Tkn.Amt,
+            Description:
+              Tkn.Desc +
+              " link to doc is as follows - " +
+              `https://siasky.net/${File}`,
+            Price: Tkn.Price,
+            TokenId: tokenId.toString(),
+            Creator: PblKey,
+            Skylink: File,
+          })
+          .then(() => {
+            console.log("Document successfully written!");
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
+          });
+
+        SetTkn({
+          Name: "",
+          Sym: "",
+          Desc: "",
+          Amt: "",
+          Price: "",
+        });
+
+        SetFile("");
+
+
+    }
+
 
     const file = async (e) => {
 
@@ -336,20 +430,27 @@ export default function CreateToken() {
     }
 
     return (
-        <div className="bb">
-            <div className="kl">
-            <fieldset>
-                <Form>
-                 <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
-                    <Form.Label id="lo" column sm={2}>
-                      Name of the Token
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control name="Name" id="fc" onChange={inputEvent} type="text" value={Tkn.Name} placeholder="Name" />
-                    </Col>
-                 </Form.Group>
+      <div className="bb">
+        <div className="kl">
+          <fieldset>
+            <Form>
+              <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
+                <Form.Label id="lo" column sm={2}>
+                  Name of the Token
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    name="Name"
+                    id="fc"
+                    onChange={inputEvent}
+                    type="text"
+                    value={Tkn.Name}
+                    placeholder="Name"
+                  />
+                </Col>
+              </Form.Group>
 
-                {/* <Form.Group as={Row} controlId="formHorizontalPassword">
+              {/* <Form.Group as={Row} controlId="formHorizontalPassword">
                     <Form.Label column sm={2}>
                     Password
                     </Form.Label>
@@ -358,43 +459,71 @@ export default function CreateToken() {
                     </Col>
                 </Form.Group> */}
 
-                <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
-                    <Form.Label id="lo" column sm={2}>
-                    Symbol
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control name="Sym" id="fc" onChange={inputEvent} type="text" value={Tkn.Sym} placeholder="Symbol (Not for NFT)" />
-                    </Col>
-                </Form.Group>
+              <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
+                <Form.Label id="lo" column sm={2}>
+                  Symbol
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    name="Sym"
+                    id="fc"
+                    onChange={inputEvent}
+                    type="text"
+                    value={Tkn.Sym}
+                    placeholder="Symbol (Not for NFT)"
+                  />
+                </Col>
+              </Form.Group>
 
-                <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
-                    <Form.Label id="lo" column sm={2}>
-                    Description
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control name="Desc" id="fc" onChange={inputEvent} type="text" value={Tkn.Desc} placeholder="Description" />
-                    </Col>
-                </Form.Group>
+              <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
+                <Form.Label id="lo" column sm={2}>
+                  Description
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    name="Desc"
+                    id="fc"
+                    onChange={inputEvent}
+                    type="text"
+                    value={Tkn.Desc}
+                    placeholder="Description"
+                  />
+                </Col>
+              </Form.Group>
 
-                <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
-                    <Form.Label id="lo" column sm={2}>
-                    Amount
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control name="Amt" id="fc" onChange={inputEvent} type="text" value={Tkn.Amt} placeholder="Amount (Not for NFT)" />
-                    </Col>
-                </Form.Group>
+              <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
+                <Form.Label id="lo" column sm={2}>
+                  Amount
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    name="Amt"
+                    id="fc"
+                    onChange={inputEvent}
+                    type="text"
+                    value={Tkn.Amt}
+                    placeholder="Amount (Not for NFT)"
+                  />
+                </Col>
+              </Form.Group>
 
-                <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
-                    <Form.Label id="lo" column sm={2}>
-                    Price
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control name="Price" id="fc" onChange={inputEvent} type="text" value={Tkn.Price} placeholder="Price" />
-                    </Col>
-                </Form.Group>
+              <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
+                <Form.Label id="lo" column sm={2}>
+                  Price
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    name="Price"
+                    id="fc"
+                    onChange={inputEvent}
+                    type="text"
+                    value={Tkn.Price}
+                    placeholder="Price"
+                  />
+                </Col>
+              </Form.Group>
 
-                {/* <Form.Group as={Row} controlId="formHorizontalEmail">
+              {/* <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
                     Public Address
                     </Form.Label>
@@ -403,21 +532,18 @@ export default function CreateToken() {
                     </Col>
                 </Form.Group> */}
 
-                
-
-
-                <Form.Group>
-                   <Form.Label id="lo" column sm={2}>
-                     Insert_File
-                    </Form.Label>
-                    <Form.File name="File"  onChange={file} id="FormControlFile"/>
-                </Form.Group>
-                <>
-                    {/* <Form.Group as={Row}>
+              <Form.Group>
+                <Form.Label id="lo" column sm={2}>
+                  Insert_File
+                </Form.Label>
+                <Form.File name="File" onChange={file} id="FormControlFile" />
+              </Form.Group>
+              <>
+                {/* <Form.Group as={Row}>
                     <Form.Label className="gf" as="legend" column sm={2}>
                         Type of Token
                     </Form.Label>
-                    <Col id="jh" sm={10}>
+                    <Col id="jh" s<Button  id="bt" className="bt1" onClick={Nft} variant="contained" color="primary" type="submit" >NFT</Button>m={10}>
                         <Form.Check
                         type="radio"
                         label="Normal Token"
@@ -432,26 +558,49 @@ export default function CreateToken() {
                         />
                     </Col>
                     </Form.Group> */}
-                </>
-                {/* <Form.Group as={Row} controlId="formHorizontalCheck">
+              </>
+              {/* <Form.Group as={Row} controlId="formHorizontalCheck">
                     <Col sm={{ span: 10, offset: 2 }}>
                     <Form.Check label="Remember me" />
                     </Col>
                 </Form.Group> */}
 
-                <Form.Group as={Row}>
-                    <Col  sm={{ span: 10, offset: 2 }}>
-                    <Button  id="bt" onClick={onSubmit} variant="contained" color="primary" type="submit">Create</Button>
-                    <Button  id="bt" className="bt1" onClick={Nft} variant="contained" color="primary" type="submit" >NFT</Button>
-                    </Col>
-         
-                </Form.Group>
-                </Form>
-
-            </fieldset>
-                
-            </div>
-            
+              <Form.Group as={Row}>
+                <Col sm={{ span: 10, offset: 2 }}>
+                  <Button
+                    id="bt"
+                    onClick={onSubmit}
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                  >
+                    Create
+                  </Button>
+                  <Button
+                    id="bt"
+                    className="bt1"
+                    onClick={Nft}
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                  >
+                    NFT
+                  </Button>
+                  <Button
+                    id="bt"
+                    className="bt1"
+                    onClick={Dnft}
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                  >
+                    DNFT
+                  </Button>
+                </Col>
+              </Form.Group>
+            </Form>
+          </fieldset>
         </div>
-    )
+      </div>
+    );
 }

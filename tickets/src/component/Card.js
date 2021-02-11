@@ -88,8 +88,8 @@ export default function Cardl(props) {
       );
 
       const txn = await new TransferTransaction()
-        .addHbarTransfer(SellerAccId, 1)
-        .addHbarTransfer(accountId, -1)
+        .addHbarTransfer(SellerAccId, (Numb)*(props.K.Price))
+        .addHbarTransfer(accountId, -((props.K.Price)*(Numb)))
 
         .freezeWith(client);
 
@@ -108,6 +108,9 @@ export default function Cardl(props) {
       console.log(
         "The transaction consensus status " + transactionStatus1.toString()
       );
+
+
+      SetNumb('');
     };
 
 
