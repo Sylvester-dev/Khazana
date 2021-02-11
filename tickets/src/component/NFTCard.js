@@ -151,7 +151,9 @@ export default function NFTCard(props) {
                               {props.K.Creator}
                             </Card.Text> */}
           <Card.Text id="gl">Amount: {props.K.Amount}</Card.Text>
+          <Card.Text id="gl">Symbol: {props.K.Symbol }</Card.Text>
           <Card.Text id="gl">Price: {props.K.Price}</Card.Text>
+
           <div id="jkl">
             
             <Button onClick={buy} variant="contained" color="primary">
