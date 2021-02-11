@@ -48,6 +48,11 @@ export default function Header() {
               <span className="h">NFT Market</span>
             </div>
           </Link>
+          <Link to="/dnft" className="header_link">
+            <div className="header_options">
+              <span className="h">DNFT Market</span>
+            </div>
+          </Link>
           <Link to="/login" className="header_link">
             <div className="header_options">
               <span className="h">LogOut</span>
