@@ -5,6 +5,7 @@ import Header from './Header'
 import Login from '../src/screens/Login'
 import Home from '../src/screens/Home'
 import PK from '../src/screens/PrivateKey'
+import Color from '../src/screens/Color'
 import Mne from '../src/screens/Mnemonic'
 import Event from '../src/screens/Event'
 import TicketList from './screens/TicketList';
@@ -49,8 +50,13 @@ function App() {
         <Route path="/login">
              <Login/> 
         </Route>
-        <Route path="/privateKey">  
-             <PK />
+        <Route path="/privateKey">
+             <Profile/>  
+             <PK/>
+        </Route>
+        <Route path="/color">  
+             <Header/>
+             <Color />
         </Route>
         <Route path="/">
             <Header />

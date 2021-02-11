@@ -22,7 +22,7 @@ export default function PK() {
     
     
     const onSubmit = async (e) => {
-        setshowProfile(true);
+        setshowProfile(false);
         // e.preventDefault();
         // const privateKey = PrivateKey.fromString(PrKey); 
         // console.log(privateKey.toString());   

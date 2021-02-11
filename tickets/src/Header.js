@@ -53,6 +53,11 @@ export default function Header() {
               <span className="h">LogOut</span>
             </div>
           </Link>
+          <Link to="/color" className="header_link">
+            <div className="header_options">
+              <span className="h">Color</span>
+            </div>
+          </Link>
           <Link to="/profile" className="header_link">
             <div className="header_options">
               <span className="h">Profile</span>
