@@ -50,8 +50,7 @@ function App() {
         <Route path="/login">
              <Login/> 
         </Route>
-        <Route path="/privateKey">
-             <Profile/>  
+        <Route path="/privateKey">  
              <PK/>
         </Route>
         <Route path="/color">  

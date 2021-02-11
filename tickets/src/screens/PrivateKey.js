@@ -1,4 +1,5 @@
 import React , { useState,useContext } from 'react'
+import {useHistory } from "react-router-dom";
 import {Box , Button } from '@material-ui/core'
 import { PrivateKey , Mnemonic} from '@hashgraph/sdk'
 import {LoginContext} from "./LoginContext";
@@ -10,7 +11,7 @@ export default function PK() {
     
     const {setPrKey,prKey,setshowProfile} = useContext(LoginContext);
     // const [PrKey , SetPrKey ] = useState('');
-    
+    const history = useHistory();
     
     const inputEvent = (e) => {
         /* console.log(e.target.value); */
@@ -23,6 +24,7 @@ export default function PK() {
     
     const onSubmit = async (e) => {
         setshowProfile(false);
+        history.push("/profile")
         // e.preventDefault();
         // const privateKey = PrivateKey.fromString(PrKey); 
         // console.log(privateKey.toString());   
