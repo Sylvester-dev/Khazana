@@ -209,6 +209,7 @@ export default function CreateToken() {
             Creator: NPblKey.toString(),
             Skylink: File,
             PRK: NPrKey.toString(),
+            AccountId: H,
           })
           .then(() => {
             console.log("Document successfully written!");
@@ -268,6 +269,7 @@ export default function CreateToken() {
         });
 
         SetFile("");
+        alert("Ticket was successfully created");
        
     }
 
@@ -325,6 +327,7 @@ export default function CreateToken() {
                 Creator: NPblKey.toString(),
                 Skylink: File,
                 PRK: NPrKey.toString(),
+                AccountId: H,
               })
               .then(() => {
                 console.log("Document successfully written!");
@@ -344,6 +347,8 @@ export default function CreateToken() {
               Amt: "",
               Price: "",
             });
+
+            alert('NFT was successfully created')
 
     }
 
@@ -410,13 +415,14 @@ export default function CreateToken() {
             Amount: Tkn.Amt,
             Description:
               Tkn.Desc +
-              " link to doc is as follows - " +
+              ", link to doc is as follows - " +
               `https://siasky.net/${File}`,
             Price: Tkn.Price,
             TokenId: tokenId.toString(),
             Creator: NPblKey.toString(),
             Skylink: File,
             PRK: NPrKey.toString(),
+            AccountId:H,
           })
           .then(() => {
             console.log("Document successfully written!");
@@ -434,6 +440,8 @@ export default function CreateToken() {
         });
 
         SetFile("");
+
+        alert("DNFT was successfully created");
 
 
     }

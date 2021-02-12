@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Box ,Button} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { PrivateKey , Client , Hbar , AccountCreateTransaction, PublicKey } from '@hashgraph/sdk';
@@ -19,6 +19,12 @@ export default function Login() {
     const myPrivateKey =
       "302e020100300506032b6570042204201026b742d1ee8cb5a0141652191e0b63ec92719c53ab8ed59d98e6fc8f21ce45";
 
+    
+
+      const [PrKey, SetPrKey] = useState("");
+      const [PbKey, SetPbKey] = useState("");
+      const [AccId, SetAccId] = useState("");
+
     const al = async () => {
 
         const client = Client.forTestnet();
@@ -33,7 +39,7 @@ export default function Login() {
 
         const transaction = new AccountCreateTransaction()
                             .setKey(privateKey.publicKey)
-                            .setInitialBalance(new Hbar(10))
+                            .setInitialBalance(new Hbar(50))
                             
 
         //Sign the transaction with the client operator private key and submit to a Hedera network
@@ -89,49 +95,59 @@ export default function Login() {
         });
 
 
-        alert("PrivateKey = 0x" + privateKey +'  '+ "PublicKey = 0x" + publicKey + '  ' + 'Account Id = ' + newAccountId)
+        SetPrKey(privateKey.toString());
+        SetPbKey(publicKey.toString());
+        SetAccId(newAccountId.toString());
+        
+        /* alert("PrivateKey = 0x" + privateKey +'  '+ "PublicKey = 0x" + publicKey + '  ' + 'Account Id = ' + newAccountId) */
     }
     return (
-      
-      <div id="te"> <h1>LOGIN</h1> 
+      <div id="te">
+        {" "}
+        <h1>LOGIN</h1>
+        <h4>PrivateKey - {PrKey} </h4>
+        <h4>PublicKey - {PbKey} </h4>
+        <h4>Account Id - {AccId}</h4>
         <div className="screen">
-              
-            
-{/*         <Button className ="f" variant="info" >Login with Private Key</Button>{' '}
+          {/*         <Button className ="f" variant="info" >Login with Private Key</Button>{' '}
             <Button className ="f" variant="success"  >Login with Mnemonic</Button>{' '}
-            <Button className ="f" variant="primary"  >Make an Account</Button>{' '}  */}  
+            <Button className ="f" variant="primary"  >Make an Account</Button>{' '}  */}
 
-            <Card id="ll">
-                <Card.Img variant="top" id="pi" src={img3}/>
-                    <Card.Body>
-                    <Card.Title id="ti">Login With:</Card.Title>
-                    <Link id="pl" to="/privatekey">
-                     <Button id="jl" variant="contained" color="primary">Private Key</Button>
-                    </Link>
-                    </Card.Body>
-            </Card>
-            <Card  id="ll" >
-                <Card.Img variant="top" id="pi" src={img1} />
-                    <Card.Body>
-                    <Card.Title id="ti" >Login With:</Card.Title>
+          <Card id="ll">
+            <Card.Img variant="top" id="pi" src={img3} />
+            <Card.Body>
+              <Card.Title id="ti">Login With:</Card.Title>
+              <Link id="pl" to="/privatekey">
+                <Button id="jl" variant="contained" color="primary">
+                  Private Key
+                </Button>
+              </Link>
+            </Card.Body>
+          </Card>
+          <Card id="ll">
+            <Card.Img variant="top" id="pi" src={img2} />
+            <Card.Body>
+              <Card.Title id="ti">Login With:</Card.Title>
 
-                     <Button onClick={al} id="jl" variant="contained"color="primary">Make an Account</Button>
-                    </Card.Body>
-            </Card>
-            <Card  id="ll">
-                <Card.Img variant="top" id="pi" src={img2} />
-                    <Card.Body>
-                    <Card.Title id="ti">Login With:</Card.Title>
-    
-                    <Link id="pl" to="/mnemonic">
-                      <Button id="jl" variant="contained" color="primary">Mnemonic</Button>
-                    </Link>
-                     
-                    </Card.Body>
-            </Card>
+              <Link id="pl" to="/mnemonic">
+                <Button id="jl" variant="contained" color="primary">
+                  Mnemonic
+                </Button>
+              </Link>
+            </Card.Body>
+          </Card>
+          <Card id="ll">
+            <Card.Img variant="top" id="pi" src={img1} />
+            <Card.Body>
+              <Card.Title id="ti">Login With:</Card.Title>
 
+              <Button onClick={al} id="jl" variant="contained" color="primary">
+                Make an Account
+              </Button>
+            </Card.Body>
+          </Card>
 
-            {/* <Link id="pl" to="/privatekey">
+          {/* <Link id="pl" to="/privatekey">
                 <Button id="jl" variant="contained" color="secondary">Login with Private Key</Button>
             </Link>
 
@@ -141,13 +157,7 @@ export default function Login() {
             
             
             <Button onClick={al} id="jl" variant="contained" color="secondary">Make an Account</Button> */}
-            
-            
-
-       
-            
         </div>
-        </div>
-        
-    )
+      </div>
+    );
 }

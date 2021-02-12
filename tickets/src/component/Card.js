@@ -1,4 +1,4 @@
-import React , { useState } from "react";
+import React , { useState,useContext } from "react";
 import { Card, OverlayTrigger, Tooltip, Image } from "react-bootstrap";
 import { Button } from "@material-ui/core";
 import {
@@ -7,9 +7,11 @@ import {
   TokenAssociateTransaction,
   PrivateKey,
 } from "@hashgraph/sdk";
+import { LoginContext } from "../screens/LoginContext";
+import firebase from "../utils/firebase";
 
 
-    const SellerAccId = "0.0.301906";
+   /*  const SellerAccId = "0.0.301906";
     const SellerPblKey =
       "0x302a300506032b657003210044c714812aec04be8c2c2704d4f0432f49b2f2b3350aa69fdc9b9715de9a8d9a";
     const SellerPrKey =
@@ -22,13 +24,49 @@ import {
       "302a300506032b65700321002ee57aad815e3597b7815728315e51bf42fbd867e32b9deb40d1f483cfc9ea6e";
     const privateKey =
       "302e020100300506032b6570042204201026b742d1ee8cb5a0141652191e0b63ec92719c53ab8ed59d98e6fc8f21ce45";
-
+ */
     let a
 export default function Cardl(props) {
 
+   const [H, setH] = useState("");
+   const [Acc, setAcc] = useState("");
+   const [Per, setPer] = useState("");
+
+   const { prKey } = useContext(LoginContext);
+   console.log(prKey);
+   const NPrKey = PrivateKey.fromString(prKey);
+
+   const NPblKey = NPrKey.publicKey;
+   console.log(NPblKey.toString());
+
+   firebase
+     .firestore()
+     .collection("User")
+     .doc(NPblKey.toString())
+     .get()
+     .then((doc) => {
+       console.log(doc.data());
+       const NAccId = doc.data().AccId;
+       console.log(NAccId);
+       setH(NAccId);
+     });
+
+
+
     const [Numb, SetNumb] = useState('');
 
-    
+    firebase
+      .firestore()
+      .collection("Tickets")
+      .doc(props.K.TokenId)
+      .get()
+      .then((doc) => {
+        setAcc(doc.data().AccountId);
+        setPer(doc.data().PRK);
+        console.log(doc.data().AccountId);
+      });
+
+
 
     const numb = async (e) => {
 
@@ -43,15 +81,15 @@ export default function Cardl(props) {
 
         
       const client = Client.forTestnet();
-      client.setOperator(SellerAccId, SellerPrKey);
+      client.setOperator(H, NPrKey);
 
       const transaction = await new TokenAssociateTransaction()
-        .setAccountId(accountId)
+        .setAccountId(H)
         .setTokenIds([props.K.TokenId])
         .freezeWith(client);
 
       //Sign with the private key of the account that is being associated to a token
-      const signTx = await transaction.sign(PrivateKey.fromString(privateKey));
+      const signTx = await transaction.sign(PrivateKey.fromString(prKey));
 
       //Submit the transaction to a Hedera network
       const txResponse = await signTx.execute(client);
@@ -66,13 +104,24 @@ export default function Cardl(props) {
         "The transaction consensus status " + transactionStatus.toString()
       );
 
+      firebase
+        .firestore()
+        .collection("Tickets")
+        .doc(props.K.TokenId)
+        .get()
+        .then((doc) => {
+          setAcc(doc.data().AccountId);
+          setPer(doc.data().PRK);
+          console.log(doc.data().AccountId);
+        });
+
       const tx = await new TransferTransaction()
-        .addTokenTransfer(props.K.TokenId, SellerAccId, -(Numb))
-        .addTokenTransfer(props.K.TokenId, accountId, (Numb))
+        .addTokenTransfer(props.K.TokenId, Acc, -Numb)
+        .addTokenTransfer(props.K.TokenId, H, Numb)
         .freezeWith(client);
 
       //Sign with the sender account private key
-      const sign = await tx.sign(PrivateKey.fromString(SellerPrKey));
+      const sign = await tx.sign(PrivateKey.fromString(Per));
 
       //Sign with the client operator private key and submit to a Hedera network
       const txResponse1 = await sign.execute(client);
@@ -88,13 +137,13 @@ export default function Cardl(props) {
       );
 
       const txn = await new TransferTransaction()
-        .addHbarTransfer(SellerAccId, (Numb)*(props.K.Price))
-        .addHbarTransfer(accountId, -((props.K.Price)*(Numb)))
+        .addHbarTransfer(Acc, Numb * props.K.Price)
+        .addHbarTransfer(H, -(Numb * props.K.Price))
 
         .freezeWith(client);
 
       //Sign with the sender account private key
-      const sign2 = await txn.sign(PrivateKey.fromString(privateKey));
+      const sign2 = await txn.sign(PrivateKey.fromString(prKey));
 
       //Sign with the client operator private key and submit to a Hedera network
       const txResponse2 = await sign2.execute(client);
@@ -109,8 +158,11 @@ export default function Cardl(props) {
         "The transaction consensus status " + transactionStatus1.toString()
       );
 
+      alert("Buying Complete");
 
       SetNumb('');
+
+      
     };
 
 
@@ -153,7 +205,7 @@ export default function Cardl(props) {
                 </Button>
               )}
             </OverlayTrigger>
-            ,
+            
           </div>
 
           {/* <Card.Text id="gg">

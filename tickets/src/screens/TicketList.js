@@ -30,6 +30,7 @@ export default function TicketList() {
   let NAccId;
   /* const [H, setH] = useState(""); */
   const { prKey } = useContext(LoginContext);
+  console.log(prKey)
   //console.log(prKey);
   const NPrKey = PrivateKey.fromString(prKey);
 
@@ -128,8 +129,6 @@ export default function TicketList() {
           
     
    
-      
-      
 
   
   return (

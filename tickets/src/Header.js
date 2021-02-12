@@ -60,7 +60,7 @@ export default function Header() {
           </Link>
           <Link to="/MyColor" className="header_link">
             <div className="header_options">
-              <span className="h">MyColor</span>
+              <span className="h">Color Show</span>
             </div>
           </Link>
           <Link to="/login" className="header_link">

@@ -13,7 +13,7 @@ export default function DNFT() {
       .onSnapshot((snapshot) => {
         SetK(snapshot.docs.map((doc) => doc.data()));
 
-        console.log(K);
+        /* console.log(K); */
       });
   }, []);
 

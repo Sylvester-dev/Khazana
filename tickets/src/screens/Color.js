@@ -171,7 +171,7 @@ var b1 = localStorage.getItem("b");
           Price: "",
         });
 
-       
+       alert('Color NFT created')
 
   }
 

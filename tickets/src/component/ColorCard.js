@@ -73,7 +73,7 @@ export default function ColorCard(props) {
                 </Button>
               )}
             </OverlayTrigger>
-            ,
+            
           </div>
           <Card.Text id="gl"> Token Id = {props.K.TokenId}</Card.Text>
           <div id="jkl"></div>
