@@ -63,9 +63,9 @@ export default function Header() {
               <span className="h">Color</span>
             </div>
           </Link>
-          <Link to="/colorMarket" className="header_link">
+          <Link to="/MyColor" className="header_link">
             <div className="header_options">
-              <span className="h">ColorMarket</span>
+              <span className="h">MyColor</span>
             </div>
           </Link>
           <Link to="/profile" className="header_link">

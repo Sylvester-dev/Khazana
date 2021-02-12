@@ -11,7 +11,7 @@ import Event from '../src/screens/Event'
 import TicketList from './screens/TicketList';
 import CreateToken from './screens/CreateToken';
 import Profile from './screens/Profile';
-import ColorMarket from './screens/ColorMarket';
+import MyColor from './screens/MyColor';
 import {LoginContext} from "./screens/LoginContext";
 import NFT from './screens/NFT';
 import DNFT from "./screens/DNFT";
@@ -61,9 +61,9 @@ function App() {
               <Header />
               <Color />
             </Route>
-            <Route path="/colorMarket">
+            <Route path="/MyColor">
               <Header />
-              <ColorMarket />
+              <MyColor />
             </Route>
             <Route path="/">
               <Header />

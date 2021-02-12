@@ -64,7 +64,7 @@ export default function CreateToken() {
         Price:"",
         PbAdd:"",
         TknId:"",
-        /* File:"", */ 
+      
 
     });
 
@@ -388,7 +388,7 @@ export default function CreateToken() {
 
         //Get the receipt of the transaction
 
-        const txn = await loltxn.sign(PrivateKey.fromString(NPrKey));
+        const txn = await loltxn.sign((NPrKey));
 
         const signtxn = await txn.execute(client);
         console.log(txn);
