@@ -125,8 +125,8 @@ export default function Cardl(props) {
         />
         <Card.Body>
           <Card.Title id="kl">{props.K.Name}</Card.Title>
-          <Card.Text id="gg"> Token ID: {props.K.TokenId}</Card.Text>
-          <Card.Text id="gg"> Description: {props.K.Description}</Card.Text>
+          <Card.Text id="gg"> <strong>Token ID:</strong> {props.K.TokenId}</Card.Text>
+          <Card.Text id="gg"> <strong>Description:</strong> {props.K.Description}</Card.Text>
           <div id="ot">
             <OverlayTrigger
               placement="bottom"

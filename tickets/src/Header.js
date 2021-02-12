@@ -8,7 +8,7 @@ export default function Header() {
     
     return (
       <nav className="header">
-        <Link to="/">
+        <Link to="/home">
           <img
             className="header_logo"
             src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fglobaltassels.org%2Ffiles%2F2016%2F03%2Fgt-product-logo-ticket.gif&f=1&nofb=1"
@@ -53,11 +53,6 @@ export default function Header() {
               <span className="h">DNFT Market</span>
             </div>
           </Link>
-          <Link to="/login" className="header_link">
-            <div className="header_options">
-              <span className="h">LogOut</span>
-            </div>
-          </Link>
           <Link to="/color" className="header_link">
             <div className="header_options">
               <span className="h">Color</span>
@@ -68,9 +63,9 @@ export default function Header() {
               <span className="h">MyColor</span>
             </div>
           </Link>
-          <Link to="/profile" className="header_link">
+          <Link to="/login" className="header_link">
             <div className="header_options">
-              <span className="h">Profile</span>
+              <span className="h">LogOut</span>
             </div>
           </Link>
         </div>

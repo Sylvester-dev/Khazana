@@ -10,7 +10,7 @@
 }
 
 .header {
-    background-color:rgb(36, 32, 32);
+    background-color:#222;
     display: flex;
     align-items: center;
 }

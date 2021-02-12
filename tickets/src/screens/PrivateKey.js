@@ -24,9 +24,9 @@ export default function PK() {
     
     const onSubmit = async (e) => {
         
-        history.push("/profile")
-         /* e.preventDefault(); */
-        // const privateKey = PrivateKey.fromString(PrKey); 
+        history.push("/home")
+        // e.preventDefault(); 
+        // const privateKey = PrivateKey.fromString(prKey); 
         // console.log(privateKey.toString());   
         // const publicKey = privateKey.publicKey;
         // console.log(publicKey.toString());

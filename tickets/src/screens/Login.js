@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { PrivateKey , Client , Hbar , AccountCreateTransaction, PublicKey } from '@hashgraph/sdk';
 import { Card,Image } from "react-bootstrap";
 import firebase from '../utils/firebase';
-import img1 from '../images/undraw_Next_option_re_r9uf.png';
+import img1 from '../images/undraw_travel_together_re_kjf2.png';
 import img2 from '../images/undraw_reading_0re1.png';
 import img3 from '../images/undraw_security_o890.png';
 
@@ -110,6 +110,14 @@ export default function Login() {
                     </Link>
                     </Card.Body>
             </Card>
+            <Card  id="ll" >
+                <Card.Img variant="top" id="pi" src={img1} />
+                    <Card.Body>
+                    <Card.Title id="ti" >Login With:</Card.Title>
+
+                     <Button onClick={al} id="jl" variant="contained"color="primary">Make an Account</Button>
+                    </Card.Body>
+            </Card>
             <Card  id="ll">
                 <Card.Img variant="top" id="pi" src={img2} />
                     <Card.Body>
@@ -121,14 +129,7 @@ export default function Login() {
                      
                     </Card.Body>
             </Card>
-            <Card  id="ll" >
-                <Card.Img variant="top" id="pi" src={img1} />
-                    <Card.Body>
-                    <Card.Title id="ti" >Login With:</Card.Title>
 
-                     <Button onClick={al} id="jl" variant="contained"color="primary">Make an Account</Button>
-                    </Card.Body>
-            </Card>
 
             {/* <Link id="pl" to="/privatekey">
                 <Button id="jl" variant="contained" color="secondary">Login with Private Key</Button>

@@ -117,7 +117,7 @@ export default function NFTCard(props) {
         <Card.Body>
           <Card.Title id="kl">{props.K.Name}</Card.Title>
 
-          <Card.Text id="gg"> Description: {props.K.Description}</Card.Text>
+          <Card.Text id="gg"><strong>Description:</strong> {props.K.Description}</Card.Text>
           <div id="ot">
             <OverlayTrigger
               placement="bottom"
@@ -182,7 +182,7 @@ export default function NFTCard(props) {
           {/* <Card.Text id="gl">Symbol: {props.K.Symbol }</Card.Text> */}
           <Card.Text id="gl">Price: {props.K.Price}</Card.Text>
 
-          <div id="jkl">
+          <div id="jkll">
             
             <Button onClick={buy} variant="contained" color="primary">
               Buy

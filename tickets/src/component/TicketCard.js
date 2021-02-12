@@ -48,7 +48,7 @@ const SellerPrKey =
             <Card.Text className="gg">
               <strong>Token Id: </strong> {a}
             </Card.Text>
-            <Card.Text id="gl">Price : {b}</Card.Text>
+            <Card.Text id="gll">Price : {b}</Card.Text>
 
             <Input className="op" placeholder="Transfer To"></Input>
 

@@ -41,13 +41,40 @@ export default function ColorCard(props) {
     };
 
   return (
-    <div id="mcc" style={styleObj}>
-      <Card id="cc">
+    <div id="mcc1" style={styleObj}>
+      <Card id="ccc">
         <div id="cpad" style={styleObj}></div>
         <Card.Body>
           <Card.Title id="kl">Topic Id : {props.K.Name}</Card.Title>
 
-          <Card.Text id="gl">{props.K.Creator} </Card.Text>
+          <div id="ot1">
+            <OverlayTrigger
+              placement="bottom"
+              overlay={
+                <Tooltip id="button-tooltip-2">{props.K.Creator}</Tooltip>
+              }
+            >
+              {({ ref, ...triggerHandler }) => (
+                <Button
+                  id="bt1"
+                  variant="light"
+                  {...triggerHandler}
+                  className="d-inline-flex align-items-center"
+                >
+                  <Image
+                    id="cim"
+                    ref={ref}
+                    roundedCircle
+                    src="https://www.microsoft.com/en-us/research/wp-content/themes/microsoft-research-theme/assets/images/svg/icon-people-circle.svg"
+                    height="20px"
+                    width="20px"
+                  />
+                  <span className="ml-1">Hover to see Creator</span>
+                </Button>
+              )}
+            </OverlayTrigger>
+            ,
+          </div>
           <Card.Text id="gl"> Token Id = {props.K.TokenId}</Card.Text>
           <div id="jkl"></div>
         </Card.Body>

@@ -10,7 +10,6 @@ import Mne from '../src/screens/Mnemonic'
 import Event from '../src/screens/Event'
 import TicketList from './screens/TicketList';
 import CreateToken from './screens/CreateToken';
-import Profile from './screens/Profile';
 import MyColor from './screens/MyColor';
 import {LoginContext} from "./screens/LoginContext";
 import NFT from './screens/NFT';
@@ -47,13 +46,6 @@ function App() {
             <Route path="/Mnemonic">
               <Mne />
             </Route>
-            <Route path="/profile">
-              <Header />
-              <Profile />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
             <Route path="/privateKey">
               <PK />
             </Route>
@@ -65,9 +57,12 @@ function App() {
               <Header />
               <MyColor />
             </Route>
-            <Route path="/">
+            <Route path="/home">
               <Header />
               <Home />
+            </Route>
+            <Route path="/">
+              <Login />
             </Route>
           </Switch>
         </LoginContext.Provider>

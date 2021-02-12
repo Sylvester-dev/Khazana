@@ -17,7 +17,7 @@
 
 #sec{
   height: 400px;
-  background-color: black;
+  background-color: #121212;
   margin-top: 2px;
 }
 
@@ -44,8 +44,8 @@
 }
 
 #pich{
-  height: 200px;
-  width: 220px;
+  height: 210px;
+  width: 160px;
 }
 
 @media only screen and (max-width: 600px) {

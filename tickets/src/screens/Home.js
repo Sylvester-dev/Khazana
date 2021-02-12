@@ -1,5 +1,6 @@
 import React from 'react'
-import './Home.css'
+import './Home.css';
+import hed from '../images/hedera.png';
 function Home() {
   return (
     <>
@@ -7,7 +8,7 @@ function Home() {
         className="banner"
         style={{
           backgroundSize: "cover",
-          backgroundImage: `url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs3.amazonaws.com%2Fhedera-hashgraph%2Fhashgraph-social.jpg&f=1&nofb=1')`,
+          backgroundImage: 'url('+hed+')',
           backgroundPosition: "center center",
         }}
       >
