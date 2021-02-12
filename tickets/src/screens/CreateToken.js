@@ -44,11 +44,6 @@ export default function CreateToken() {
         }
       )
     
-      
-      
-
-
-
   
 /* 
     const AccId = '0.0.301906'
@@ -350,8 +345,6 @@ export default function CreateToken() {
               Amt: "",
               Price: "",
             });
-
-            SetFile('');
 
     }
 
