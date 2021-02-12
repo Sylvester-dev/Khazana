@@ -1,4 +1,4 @@
-import React , {useContext} from 'react'
+import React , {useContext , useState} from 'react'
 import {LoginContext} from "./LoginContext";
 import {
   Client,
@@ -12,13 +12,23 @@ import {
 
 function Profile() {
   const {prKey} = useContext(LoginContext);
-  localStorage.setItem("Pr",prKey);
-  var pr = localStorage.getItem("Pr");
-  console.log(pr);
+  
+  /* window.localStorage.setItem("Pr",prKey);
+  var pr = localStorage.getItem("Pr"); */
+
+  if (!localStorage.getItem("Pr")) {
+    var pr = window.localStorage.setItem("Pr", prKey);
+  }
+
+  /* const [P,SetP] = useState('') */
+  /* SetP(prKey);
+  console.log(P) */
+
   return (
     <>
       <h1>Profile</h1>
-      <h2>Private key : {prKey}</h2>
+      <h2>Private key : {pr}</h2>
+      <h3>{pr}</h3>
       
 
     </>

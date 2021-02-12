@@ -3,9 +3,9 @@ import './color.css';
 import { Button } from '@material-ui/core';
 function Color() {
 
-  const [r , setR] = useState('0');
-  const [g , setG] = useState('0');
-  const [b , setB] = useState('0');
+  const [r , setR] = useState('00');
+  const [g , setG] = useState('00');
+  const [b , setB] = useState('00');
   const inputEventR = (e) => {
     // console.log(e.target.value); 
     setR(e.target.value);
@@ -27,20 +27,25 @@ localStorage.setItem("b",b);
 var b1 = localStorage.getItem("b");
 // console.log(r1);
 
-  var red = document.getElementById('red').value;
+  /* var red = document.getElementById('red').value;
    console.log(red);
   var green = document.getElementById('green').value;
-  var blue = document.getElementById('blue').value;
-  var color = 'rgb('+red+','+green+','+blue+')';
+  var blue = document.getElementById('blue').value; */
+  var color = 'rgb('+r+','+g+','+b+')';
   console.log(color);
-  document.body.style.backgroundColor = color;
-  document.getElementById('oo').style.backgroundColor=color;
+  /* document.body.style.backgroundColor = color;
+  document.getElementById('oo').style.backgroundColor=color; */
+
+
+  const styleObj = {
+    backgroundColor:color
+  }
 
 // document.getElementById('red').addEventListener('input',myColor);
 // document.getElementById('green').addEventListener('input',myColor);
 // document.getElementById('blue').addEventListener('input',myColor);
   return (
-    <div id="oo">
+    <div id="oo" style={styleObj}>
       <div className="main">
         Choose your RGB<h1 id="box">{r},{g},{b}</h1>
         Red:<input type="range" id="red" onChange={inputEventR} value={r}  min="0" max="255"/>

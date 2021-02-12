@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext,useState } from "react";
 import { Form , Col , Row } from 'react-bootstrap'
 import { Button } from '@material-ui/core'
 import {
@@ -11,13 +11,46 @@ import {
 } from "@hashgraph/sdk";
 import firebase from '../utils/firebase';
 import { SkynetClient } from 'skynet-js'
-/* import IPFS from 'ipfs-core' */
+import { LoginContext } from "./LoginContext";
+
 
 
 import './CreateToken.css'
 
 export default function CreateToken() {
 
+  const [H, setH] = useState('')
+  const { prKey } = useContext(LoginContext);
+  console.log(prKey)
+  const NPrKey = PrivateKey.fromString(prKey);
+  
+  const NPblKey = NPrKey.publicKey;
+  console.log(NPblKey.toString());
+
+
+
+
+    firebase
+      .firestore()
+      .collection("User")
+      .doc(NPblKey.toString())
+      .get()
+      .then((doc) =>
+          {
+          console.log(doc.data());
+          const NAccId = doc.data().AccId; 
+          console.log(NAccId)
+          setH(NAccId)
+        }
+      )
+    
+      
+      
+
+
+
+  
+/* 
     const AccId = '0.0.301906'
     const PblKey = '302a300506032b657003210044c714812aec04be8c2c2704d4f0432f49b2f2b3350aa69fdc9b9715de9a8d9a';
     const PrKey = '302e020100300506032b65700422042092d0f20b0324b71b55bf397a85c214bbb66e98c8869911fb30dd7b6a0d60b7a4'
@@ -25,7 +58,7 @@ export default function CreateToken() {
     
     const accountId = '0.0.303460'
     const publicKey = "302a300506032b65700321002ee57aad815e3597b7815728315e51bf42fbd867e32b9deb40d1f483cfc9ea6e"
-    const privateKey = "302e020100300506032b6570042204201026b742d1ee8cb5a0141652191e0b63ec92719c53ab8ed59d98e6fc8f21ce45"
+    const privateKey = "302e020100300506032b6570042204201026b742d1ee8cb5a0141652191e0b63ec92719c53ab8ed59d98e6fc8f21ce45" */
 
 
     const [Tkn , SetTkn] = useState({   
@@ -138,13 +171,13 @@ export default function CreateToken() {
 
         
         const client = Client.forTestnet();
-        client.setOperator(AccId, PrKey);
+        client.setOperator(H, NPrKey);
 
 
         const transaction = await new TokenCreateTransaction()
                         .setTokenName(Tkn.Name)
                         .setTokenSymbol(Tkn.Sym)
-                        .setTreasuryAccountId(AccId)
+                        .setTreasuryAccountId(H)
                         .setInitialSupply(Tkn.Amt)
                         .execute(client);
        
@@ -168,25 +201,27 @@ export default function CreateToken() {
         })
        
 
-        firebase.firestore().collection('Tickets').doc(tokenId.toString()).set({
-            
-            Name:Tkn.Name,
-            Symbol:Tkn.Sym,
-            Amount:Tkn.Amt,
-            Description:Tkn.Desc,
-            Price:Tkn.Price,
-            TokenId:(tokenId.toString()),
-            Creator:PblKey,
-            Skylink:File
-            
-        
-        })
-        .then(() => {
+        firebase
+          .firestore()
+          .collection("Tickets")
+          .doc(tokenId.toString())
+          .set({
+            Name: Tkn.Name,
+            Symbol: Tkn.Sym,
+            Amount: Tkn.Amt,
+            Description: Tkn.Desc,
+            Price: Tkn.Price,
+            TokenId: tokenId.toString(),
+            Creator: NPblKey.toString(),
+            Skylink: File,
+            PRK: NPrKey.toString(),
+          })
+          .then(() => {
             console.log("Document successfully written!");
-        })
-        .catch((error) => {
+          })
+          .catch((error) => {
             console.error("Error writing document: ", error);
-        });
+          });
 
         /* firebase
           .firestore()
@@ -248,23 +283,23 @@ export default function CreateToken() {
         console.log(Tkn)
 
         const client = Client.forTestnet();
-        client.setOperator(AccId, PrKey);
+        client.setOperator(H, NPrKey);
         
 
         const transaction = await new TokenCreateTransaction()
               .setTokenName(Tkn.Name)
               .setTokenSymbol(File)
-              .setTreasuryAccountId(AccId)
+              .setTreasuryAccountId(H)
               .setInitialSupply(1)
               .freezeWith(client);
 
-            console.log(
+           /*  console.log(
               transaction.transactionId.validStart.seconds.toString()
-            );
+            ); */
             
             //Get the receipt of the transaction
 
-            const txn = await transaction.sign(PrivateKey.fromString(PrKey));
+            const txn = await transaction.sign(NPrKey);
             
 
             const signtxn = await txn.execute(client);
@@ -280,25 +315,29 @@ export default function CreateToken() {
 
 
             firebase
-            .firestore()
-            .collection("NFT")
-            .doc(tokenId.toString())
-            .set({
+              .firestore()
+              .collection("NFT")
+              .doc(tokenId.toString())
+              .set({
                 Name: Tkn.Name,
                 Symbol: File,
                 Amount: 1,
-                Description: Tkn.Desc + ' link to doc is as follows - ' + `https://siasky.net/${File}`,
+                Description:
+                  Tkn.Desc +
+                  " link to doc is as follows - " +
+                  `https://siasky.net/${File}`,
                 Price: Tkn.Price,
                 TokenId: tokenId.toString(),
-                Creator: PblKey,
+                Creator: NPblKey.toString(),
                 Skylink: File,
-            })
-            .then(() => {
-            console.log("Document successfully written!");
-            })
-            .catch((error) => {
-            console.error("Error writing document: ", error);
-            });
+                PRK: NPrKey.toString(),
+              })
+              .then(() => {
+                console.log("Document successfully written!");
+              })
+              .catch((error) => {
+                console.error("Error writing document: ", error);
+              });
 
 
 
@@ -323,11 +362,9 @@ export default function CreateToken() {
 
 
         const client = Client.forTestnet();
-        client.setOperator(AccId, PrKey);
+        client.setOperator(H, NPrKey);
 
-        const transaction = new TopicCreateTransaction().setSubmitKey(
-          PrivateKey.fromString(PrKey)
-        );
+        const transaction = new TopicCreateTransaction().setSubmitKey(NPrKey);
 
         //Sign with the client operator private key and submit the transaction to a Hedera network
         const txResponse = await transaction.execute(client);
@@ -351,7 +388,7 @@ export default function CreateToken() {
         const loltxn = await new TokenCreateTransaction()
           .setTokenName(Tkn.Name)
           .setTokenSymbol(newTopicId.toString())
-          .setTreasuryAccountId(AccId)
+          .setTreasuryAccountId(H)
           .setInitialSupply(Tkn.Amt)
           .freezeWith(client);
 
@@ -359,7 +396,7 @@ export default function CreateToken() {
 
         //Get the receipt of the transaction
 
-        const txn = await loltxn.sign(PrivateKey.fromString(PrKey));
+        const txn = await loltxn.sign(PrivateKey.fromString(NPrKey));
 
         const signtxn = await txn.execute(client);
         console.log(txn);
@@ -385,8 +422,9 @@ export default function CreateToken() {
               `https://siasky.net/${File}`,
             Price: Tkn.Price,
             TokenId: tokenId.toString(),
-            Creator: PblKey,
+            Creator: NPblKey.toString(),
             Skylink: File,
+            PRK: NPrKey.toString(),
           })
           .then(() => {
             console.log("Document successfully written!");
@@ -433,6 +471,7 @@ export default function CreateToken() {
       <div className="bb">
         <div className="kl">
           <fieldset>
+          {/* <h2>{prKey}</h2> */}
             <Form>
               <Form.Group as={Row} controlId="formHorizontalEmail" id="fo">
                 <Form.Label id="lo" column sm={2}>
