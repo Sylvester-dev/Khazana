@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import TicketCard from '../component/TicketCard'
 import firebase from "../utils/firebase";
-import useKey from "../hooks/useKey"
+import useKey from "../hooks/useKey";
 import {
   Client,
   AccountBalanceQuery,
@@ -21,6 +21,9 @@ const SellerPrKey =
  */
 
 export default function TicketList() {
+  
+
+
 
   const [T, SetT] = useState([]);
   // const [V, SetV] = useState(''); 
@@ -36,6 +39,7 @@ export default function TicketList() {
 
   const NPblKey = NPrKey.publicKey;
   /* console.log(NPblKey.toString()); */
+   
 
   firebase
     .firestore()
