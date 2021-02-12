@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { PrivateKey , Client , Hbar , AccountCreateTransaction, PublicKey } from '@hashgraph/sdk';
 import { Card,Image } from "react-bootstrap";
 import firebase from '../utils/firebase';
+import img1 from '../images/undraw_Next_option_re_r9uf.png';
+import img2 from '../images/undraw_reading_0re1.png';
+import img3 from '../images/undraw_security_o890.png';
 
 
 import './Login.css'
@@ -99,7 +102,7 @@ export default function Login() {
             <Button className ="f" variant="primary"  >Make an Account</Button>{' '}  */}  
 
             <Card id="ll">
-                <Card.Img variant="top" id="pi" src={"https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" }/>
+                <Card.Img variant="top" id="pi" src={img3}/>
                     <Card.Body>
                     <Card.Title id="ti">Login With:</Card.Title>
                     <Link id="pl" to="/privatekey">
@@ -108,7 +111,7 @@ export default function Login() {
                     </Card.Body>
             </Card>
             <Card  id="ll">
-                <Card.Img variant="top" id="pi" src="https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" />
+                <Card.Img variant="top" id="pi" src={img2} />
                     <Card.Body>
                     <Card.Title id="ti">Login With:</Card.Title>
     
@@ -119,7 +122,7 @@ export default function Login() {
                     </Card.Body>
             </Card>
             <Card  id="ll" >
-                <Card.Img variant="top" id="pi" src="https://dtkp6g0samjql.cloudfront.net/uploads/photo/file/18285029/9c309160-e144-41d0-b6ae-2fc92328df64.png" />
+                <Card.Img variant="top" id="pi" src={img1} />
                     <Card.Body>
                     <Card.Title id="ti" >Login With:</Card.Title>
 
