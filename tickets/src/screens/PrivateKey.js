@@ -23,9 +23,15 @@ export default function PK() {
     
     
     const onSubmit = async (e) => {
+       
         
-        history.push("/home")
         // e.preventDefault(); 
+        if(prKey.length <= 96 && prKey.length!=null){
+            history.push("/login")
+            alert("Error Login!!")
+        }else{
+            history.push("/home")
+        }
         // const privateKey = PrivateKey.fromString(prKey); 
         // console.log(privateKey.toString());   
         // const publicKey = privateKey.publicKey;
