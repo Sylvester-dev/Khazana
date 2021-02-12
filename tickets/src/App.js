@@ -22,7 +22,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <LoginContext.Provider value={{ prKey, setPrKey}}>
+        <LoginContext.Provider value={{ prKey, setPrKey }}>
           <Switch>
             <Route path="/create">
               <Header />
@@ -35,41 +35,44 @@ function App() {
             <Route path="/nft">
               <Header />
               <NFT />
-        </Route>
-        <Route path="/ticket">
-          <Header />
-          <TicketList />
-        </Route>
-        <Route path="/Mnemonic">
-            <Mne />
-        </Route>
-        <Route path="/profile">           
-             <Header/>
-             <Profile/>         
-        </Route>
-        <Route path="/login">
-             <Login/> 
-        </Route>
-        <Route path="/privateKey">  
-             <PK/>
-        </Route>
-        <Route path="/color">  
-             <Header/>
-             <Color />
-        </Route>
-        <Route path="/colorMarket">  
-             <Header/>
-             <ColorMarket />
-        </Route>
-        <Route path="/">
-            <Header />
-            <Home />
-        </Route>   
-      </Switch>
-    </LoginContext.Provider>
-  </div>
-</Router>
-    
+            </Route>
+            <Route path="/dnft">
+              <Header />
+              <DNFT />
+            </Route>
+            <Route path="/ticket">
+              <Header />
+              <TicketList />
+            </Route>
+            <Route path="/Mnemonic">
+              <Mne />
+            </Route>
+            <Route path="/profile">
+              <Header />
+              <Profile />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/privateKey">
+              <PK />
+            </Route>
+            <Route path="/color">
+              <Header />
+              <Color />
+            </Route>
+            <Route path="/colorMarket">
+              <Header />
+              <ColorMarket />
+            </Route>
+            <Route path="/">
+              <Header />
+              <Home />
+            </Route>
+          </Switch>
+        </LoginContext.Provider>
+      </div>
+    </Router>
   );
 }
 
