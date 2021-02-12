@@ -44,9 +44,9 @@ const SellerPrKey =
             value={a}
           />
           <Card.Body id="cb">
-            <Card.Title className="kl">{props.T.title}</Card.Title>
+            <Card.Title className="kl">{props.T.Name}</Card.Title>
             <Card.Text className="gg">
-              <strong>Description: </strong> {a}
+              <strong>Token Id: </strong> {a}
             </Card.Text>
             <Card.Text id="gl">Price : {b}</Card.Text>
 

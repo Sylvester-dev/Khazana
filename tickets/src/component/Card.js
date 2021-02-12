@@ -125,12 +125,14 @@ export default function Cardl(props) {
         />
         <Card.Body>
           <Card.Title id="kl">{props.K.Name}</Card.Title>
-
+          <Card.Text id="gg"> Token ID: {props.K.TokenId}</Card.Text>
           <Card.Text id="gg"> Description: {props.K.Description}</Card.Text>
           <div id="ot">
             <OverlayTrigger
               placement="bottom"
-              overlay={<Tooltip id="button-tooltip-2">{props.K.Creator}</Tooltip>}
+              overlay={
+                <Tooltip id="button-tooltip-2">{props.K.Creator}</Tooltip>
+              }
             >
               {({ ref, ...triggerHandler }) => (
                 <Button
