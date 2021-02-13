@@ -23,8 +23,6 @@ const SellerPrKey =
 export default function TicketList() {
   
 
-
-
   const [T, SetT] = useState([]);
   // const [V, SetV] = useState(''); 
 

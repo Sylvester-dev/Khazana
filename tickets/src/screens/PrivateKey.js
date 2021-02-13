@@ -26,7 +26,7 @@ export default function PK() {
        
         
         // e.preventDefault(); 
-        if(prKey.length <= 96 && prKey.length!=null){
+        if(prKey.length <= 94 && prKey.length!=null){
             history.push("/login")
             alert("Error Login!!")
         }else{
