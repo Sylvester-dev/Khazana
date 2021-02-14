@@ -15,13 +15,11 @@ import './Login.css'
 export default function Login() {
 
 
-    /* const myAccountId = "0.0.303460";
+    const myAccountId = "0.0.303460";
     const myPrivateKey =
-      "302e020100300506032b6570042204201026b742d1ee8cb5a0141652191e0b63ec92719c53ab8ed59d98e6fc8f21ce45"; */
+      "302e020100300506032b6570042204201026b742d1ee8cb5a0141652191e0b63ec92719c53ab8ed59d98e6fc8f21ce45"; 
 
-      const myAccountId = "0.0.255748";
-      const myPrivateKey =
-        "302e020100300506032b6570042204208abde9468b7b2956797e2cf62714a43630be78351989a6c6de2400003199f185";
+
 
       const [PrKey, SetPrKey] = useState("");
       const [PbKey, SetPbKey] = useState("");
