@@ -1,7 +1,6 @@
 # Khazana
 
 ### What it does
-
 Our Web App is a platform to create/buy/sell cause based tokens.The cause can be an event , movie , relief fund or Loyalty program etc.Other than that we have a small crypto collectible game pre-built on the application.That is our take on crypto collectible on hedera ecosystem with HTS and HCS .With these things we are still not finished because we tried to get our hands dirty with NFT(making NFT using HTS but it is not natively supported) and DNFT(Dynamic NFT created by using HTS and HCS).
 
 ### How it helps people
